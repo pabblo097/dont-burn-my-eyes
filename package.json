@@ -1,11 +1,11 @@
 {
-  "name": "chrome-extension-boilerplate-react-vite",
+  "name": "dont-burn-my-eyes",
   "version": "0.0.1",
-  "description": "chrome extension boilerplate",
+  "description": "Simple screen dimmer",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
+    "url": "https://github.com/pabblo097/dont-burn-my-eyes.git"
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
