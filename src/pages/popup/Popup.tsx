@@ -4,7 +4,6 @@ import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
 import withSuspense from '@src/shared/hoc/withSuspense';
 import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 import {
-   Button,
    VStack,
    Slider,
    SliderTrack,
@@ -13,17 +12,17 @@ import {
    Text,
    Flex,
    Tag,
+   StackDivider,
+   TagLabel,
 } from '@chakra-ui/react';
 import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
+import ToggleButton from '@root/src/shared/components/ToggleButton';
 
 const Popup = () => {
    const isDimmerEnabled = useStorage(dimmerStateStorage);
    const dimmerOpacity = useStorage(dimmerOpacityStorage);
 
    const [opacityValue, setOpacityValue] = useState(dimmerOpacity * 100);
-
-   const buttonColor = isDimmerEnabled ? 'teal' : 'red';
-   const buttonLabel = isDimmerEnabled ? 'Enabled' : 'Disabled';
 
    const handleOpacityValueChange = (value: number) => {
       setOpacityValue(value);
@@ -32,19 +31,20 @@ const Popup = () => {
 
    return (
       <VStack
-         spacing={'6'}
+         spacing={'4'}
          bgColor={'gray.800'}
          width={300}
          height={500}
          p={'4'}
+         divider={<StackDivider />}
       >
-         <Button
-            colorScheme={buttonColor}
-            onClick={dimmerStateStorage.toggle}
-            w={'full'}
-         >
-            {buttonLabel}
-         </Button>
+         <ToggleButton
+            defaultValue={isDimmerEnabled}
+            onChange={(value) => dimmerStateStorage.set(value)}
+            leftLabel="Off"
+            rightLabel="On"
+         />
+
          <VStack w={'full'}>
             <Flex
                w={'full'}
@@ -56,10 +56,9 @@ const Popup = () => {
                >
                   Opacity
                </Text>
-               <Tag
-                  justifyContent={'end'}
-                  w={50}
-               >{`${Math.round(opacityValue)}%`}</Tag>
+               <Tag colorScheme={'blue'}>
+                  <TagLabel>{`${Math.round(opacityValue)}%`}</TagLabel>
+               </Tag>
             </Flex>
             <Slider
                aria-label="opacity-slider"
