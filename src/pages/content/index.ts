@@ -1,11 +1,12 @@
 (async () => {
    const storage = await chrome.storage.local.get(['isDimmerEnabled', 'dimmerOpacity']);
+
    let isDimmerEnabled = storage.isDimmerEnabled;
    let dimmerOpacity = storage.dimmerOpacity;
 
-   const html = document.documentElement;
-
    const dimmer = document.createElement('div');
+   dimmer.id = 'screen-dimmer';
+   dimmer.ariaHidden = 'true';
    dimmer.style.opacity = isDimmerEnabled ? dimmerOpacity : '0';
    dimmer.style.display = 'block';
    dimmer.style.zIndex = '2147483647';
@@ -22,6 +23,7 @@
    dimmer.style.mixBlendMode = 'multiply';
    dimmer.style.transition = '.2s';
 
+   const html = document.documentElement;
    html.appendChild(dimmer);
 
    chrome.storage.local.onChanged.addListener((changes) => {
