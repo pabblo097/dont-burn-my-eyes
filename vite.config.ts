@@ -12,54 +12,55 @@ const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@root': rootDir,
-      '@src': srcDir,
-      '@assets': resolve(srcDir, 'assets'),
-      '@pages': pagesDir,
-    },
-  },
-  plugins: [...getPlugins(isDev), react()],
-  publicDir: resolve(rootDir, 'public'),
-  build: {
-    outDir: resolve(rootDir, 'dist'),
-    /** Can slow down build speed. */
-    // sourcemap: isDev,
-    minify: isProduction,
-    modulePreload: false,
-    reportCompressedSize: isProduction,
-    emptyOutDir: !isDev,
-    rollupOptions: {
-      input: {
-        contentInjected: resolve(pagesDir, 'content', 'injected', 'index.ts'),
-        contentUI: resolve(pagesDir, 'content', 'ui', 'index.ts'),
-        background: resolve(pagesDir, 'background', 'index.ts'),
-        contentStyle: resolve(pagesDir, 'content', 'style.scss'),
-        popup: resolve(pagesDir, 'popup', 'index.html'),
-        options: resolve(pagesDir, 'options', 'index.html'),
+   resolve: {
+      alias: {
+         '@root': rootDir,
+         '@src': srcDir,
+         '@assets': resolve(srcDir, 'assets'),
+         '@pages': pagesDir,
       },
-      output: {
-        entryFileNames: 'src/pages/[name]/index.js',
-        chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
-        assetFileNames: assetInfo => {
-          const { name } = path.parse(assetInfo.name);
-          const assetFileName = name === 'contentStyle' ? `${name}${getCacheInvalidationKey()}` : name;
-          return `assets/[ext]/${assetFileName}.chunk.[ext]`;
-        },
+   },
+   plugins: [...getPlugins(isDev), react()],
+   publicDir: resolve(rootDir, 'public'),
+   build: {
+      outDir: resolve(rootDir, 'dist'),
+      /** Can slow down build speed. */
+      // sourcemap: isDev,
+      minify: isProduction,
+      modulePreload: false,
+      reportCompressedSize: isProduction,
+      emptyOutDir: !isDev,
+      rollupOptions: {
+         input: {
+            content: resolve(pagesDir, 'content', 'index.ts'),
+            popup: resolve(pagesDir, 'popup', 'index.html'),
+            options: resolve(pagesDir, 'options', 'index.html'),
+         },
+         output: {
+            entryFileNames: 'src/pages/[name]/index.js',
+            chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
+            assetFileNames: (assetInfo) => {
+               const { name } = path.parse(assetInfo.name);
+               const assetFileName =
+                  name === 'contentStyle' ? `${name}${getCacheInvalidationKey()}` : name;
+               return `assets/[ext]/${assetFileName}.chunk.[ext]`;
+            },
+         },
+         onwarn(warning, warn) {
+            if (
+               warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
+               warning.message.includes(`"use client"`)
+            ) {
+               return;
+            }
+            warn(warning);
+         },
       },
-      onwarn(warning, warn) {
-        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) {
-          return;
-        }
-        warn(warning);
-      },
-    },
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    include: ['**/*.test.ts', '**/*.test.tsx'],
-    setupFiles: './test-utils/vitest.setup.js',
-  },
+   },
+   test: {
+      globals: true,
+      environment: 'jsdom',
+      include: ['**/*.test.ts', '**/*.test.tsx'],
+      setupFiles: './test-utils/vitest.setup.js',
+   },
 });
