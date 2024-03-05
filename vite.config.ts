@@ -35,6 +35,7 @@ export default defineConfig({
             content: resolve(pagesDir, 'content', 'index.ts'),
             popup: resolve(pagesDir, 'popup', 'index.html'),
             options: resolve(pagesDir, 'options', 'index.html'),
+            background: resolve(pagesDir, 'background', 'index.ts'),
          },
          output: {
             entryFileNames: 'src/pages/[name]/index.js',
