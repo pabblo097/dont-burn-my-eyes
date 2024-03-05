@@ -2,7 +2,7 @@ import { Container, StackDivider, VStack } from '@chakra-ui/react';
 import Logo from './Logo';
 import DividerWithHeading from './DividerWithHeading';
 import DimmerSwitch from './DimmerSwitch';
-import DimmerWorkingModeRadio from './DimmerWorkingModeRadio';
+import DimmerOperatingModeSelect from './DimmerOperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
 import Footer from './Footer';
 
@@ -26,7 +26,7 @@ const Options = () => {
             >
                <DimmerSwitch />
 
-               <DimmerWorkingModeRadio />
+               <DimmerOperatingModeSelect />
 
                <UrlsConfig />
 
