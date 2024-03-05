@@ -1,28 +1,10 @@
-import {
-   AbsoluteCenter,
-   Box,
-   Container,
-   Divider,
-   FormControl,
-   FormLabel,
-   HStack,
-   Heading,
-   Radio,
-   RadioGroup,
-   StackDivider,
-   Switch,
-   Tab,
-   TabList,
-   TabPanel,
-   TabPanels,
-   Tabs,
-   VStack,
-   Text,
-   AlertIcon,
-   Alert,
-   Center,
-} from '@chakra-ui/react';
-import UrlsConfigTable from './UrlsConfigTable';
+import { Container, StackDivider, VStack } from '@chakra-ui/react';
+import Logo from './Logo';
+import DividerWithHeading from './DividerWithHeading';
+import DimmerSwitch from './DimmerSwitch';
+import DimmerWorkingModeRadio from './DimmerWorkingModeRadio';
+import UrlsConfig from './UrlsConfig';
+import Footer from './Footer';
 
 const Options = () => {
    return (
@@ -33,96 +15,22 @@ const Options = () => {
          p={8}
       >
          <VStack>
-            <Heading
-               size={'4xl'}
-               py={8}
-            >
-               Logo placeholder
-            </Heading>
+            <Logo />
 
-            <Box
-               position="relative"
-               w={'full'}
-               py={8}
-            >
-               <Divider border={'1px'} />
-               <AbsoluteCenter
-                  px="4"
-                  bgColor={'gray.800'}
-               >
-                  <Heading>Settings</Heading>
-               </AbsoluteCenter>
-            </Box>
+            <DividerWithHeading />
 
             <VStack
                w={'full'}
                divider={<StackDivider />}
                spacing={4}
             >
-               <FormControl
-                  display="flex"
-                  alignItems="center"
-               >
-                  <FormLabel
-                     htmlFor="dimmer-switch"
-                     mb="0"
-                  >
-                     Enable screen dimmer
-                  </FormLabel>
-                  <Switch id="dimmer-switch" />
-               </FormControl>
+               <DimmerSwitch />
 
-               <FormControl as="fieldset">
-                  <FormLabel as="legend">Mode</FormLabel>
-                  <RadioGroup defaultValue="Everywhere except">
-                     <HStack spacing="24px">
-                        <Radio value="Everywhere except">Everywhere except</Radio>
-                        <Radio value="Only on">Only on</Radio>
-                     </HStack>
-                  </RadioGroup>
-                  <Alert
-                     status="info"
-                     mt={3}
-                  >
-                     <AlertIcon />
-                     Chakra is going live on August 30th. Get ready!
-                  </Alert>
-               </FormControl>
+               <DimmerWorkingModeRadio />
 
-               <VStack
-                  w={'full'}
-                  spacing={4}
-               >
-                  <Text
-                     fontSize={'md'}
-                     fontWeight={'medium'}
-                     alignSelf={'self-start'}
-                  >
-                     {`URL's config`}
-                  </Text>
+               <UrlsConfig />
 
-                  <Tabs
-                     w={'full'}
-                     isFitted
-                     variant="enclosed"
-                  >
-                     <TabList>
-                        <Tab>Everywhere except</Tab>
-                        <Tab>Only on</Tab>
-                     </TabList>
-                     <TabPanels>
-                        <TabPanel>
-                           <UrlsConfigTable tableMode="everywhereExcept" />
-                        </TabPanel>
-                        <TabPanel>
-                           <UrlsConfigTable tableMode="onlyOn" />
-                        </TabPanel>
-                     </TabPanels>
-                  </Tabs>
-               </VStack>
-               <Center h={'40px'}>
-                  <Text color={'gray.500'}>Created by Paweł Wiewióra</Text>
-               </Center>
+               <Footer />
             </VStack>
          </VStack>
       </Container>
