@@ -13,28 +13,19 @@ import dimmerOperatingModeStorage, {
    isDimmerOperatingMode,
 } from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import { ChangeEvent } from 'react';
+import { infoMessagesWithHighlight } from './constants';
 
 const DimmerOperatingModeSelect = () => {
    const dimmerOperatingMode = useStorage(dimmerOperatingModeStorage);
 
-   const infoMessage =
-      dimmerOperatingMode === 'everywhereExcept'
-         ? `Screen dimmer is going to be applied everywhere except of URL's specified in URL's config / Everywhere except section bellow.`
-         : `Screen dimmer is going to be applied only on URL's specified in URL's config / Only on section bellow.`;
-
-   const infoMessageHighlights =
-      dimmerOperatingMode === 'everywhereExcept'
-         ? ['everywhere except', `URL's config / Everywhere except`]
-         : ['only on', `URL's config / Only on`];
+   const { message, highlight } = infoMessagesWithHighlight[dimmerOperatingMode];
 
    const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-      const operatingMode = event.target.value;
-
-      if (!isDimmerOperatingMode(operatingMode)) {
+      if (!isDimmerOperatingMode(event.target.value)) {
          return;
       }
 
-      dimmerOperatingModeStorage.set(operatingMode);
+      dimmerOperatingModeStorage.set(event.target.value);
    };
 
    return (
@@ -53,29 +44,38 @@ const DimmerOperatingModeSelect = () => {
             >
                Operating mode
             </FormLabel>
+
             <Select onChange={handleSelectChange}>
                <option
                   value="everywhereExcept"
-                  selected={dimmerOperatingMode === 'everywhereExcept' && true}
+                  selected={dimmerOperatingMode === 'everywhereExcept'}
                >
                   Everywhere except
                </option>
                <option
                   value="onlyOn"
-                  selected={dimmerOperatingMode === 'onlyOn' && true}
+                  selected={dimmerOperatingMode === 'onlyOn'}
                >
                   Only on
                </option>
+               <option
+                  value="everywhere"
+                  selected={dimmerOperatingMode === 'everywhere'}
+               >
+                  Everywhere
+               </option>
             </Select>
          </FormControl>
+
          <Alert status="info">
             <AlertIcon />
+
             <Text>
                <Highlight
-                  query={infoMessageHighlights}
+                  query={highlight}
                   styles={{ fontWeight: 'bold', color: 'blue.100' }}
                >
-                  {infoMessage}
+                  {message}
                </Highlight>
             </Text>
          </Alert>

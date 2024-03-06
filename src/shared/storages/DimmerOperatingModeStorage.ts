@@ -1,6 +1,6 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
 
-const dimmerOperatingModes = ['everywhereExcept', 'onlyOn'] as const;
+const dimmerOperatingModes = ['everywhereExcept', 'onlyOn', 'everywhere'] as const;
 
 export type DimmerOperatingMode = (typeof dimmerOperatingModes)[number];
 
