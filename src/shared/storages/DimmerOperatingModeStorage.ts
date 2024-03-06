@@ -8,13 +8,25 @@ export const isDimmerOperatingMode = (value: unknown): value is DimmerOperatingM
    return typeof value === 'string' && dimmerOperatingModes.includes(value as DimmerOperatingMode);
 };
 
-type DimmerOperatingModeStorage = BaseStorage<DimmerOperatingMode>;
+interface DimmerOperatingModeStorageActions {
+   init: () => Promise<void>;
+}
+
+type DimmerOperatingModeStorage = BaseStorage<DimmerOperatingMode> &
+   DimmerOperatingModeStorageActions;
+
+const storage = createStorage<DimmerOperatingMode>('dimmerOperatingMode', {
+   storageType: StorageType.Local,
+   liveUpdate: true,
+});
 
 const dimmerOperatingModeStorage: DimmerOperatingModeStorage = {
-   ...createStorage<DimmerOperatingMode>('dimmerOperatingMode', 'everywhereExcept', {
-      storageType: StorageType.Local,
-      liveUpdate: true,
-   }),
+   ...storage,
+   init: async () => {
+      if ((await storage.get()) === undefined) {
+         await storage.set('everywhereExcept');
+      }
+   },
 };
 
 export default dimmerOperatingModeStorage;
