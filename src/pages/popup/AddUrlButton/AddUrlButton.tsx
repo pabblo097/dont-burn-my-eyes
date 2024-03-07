@@ -36,6 +36,7 @@ const AddUrlButton = () => {
             justifyContent={'space-between'}
             rightIcon={isUrlInList ? <CloseIcon /> : <AddIcon />}
             isDisabled={!isWebsite}
+            px={5}
             onClick={async () => await handleOnClick()}
          >
             {`${isUrlInList ? 'Remove from' : 'Add to'} ${operatingMode === 'blackList' ? 'Black list' : 'White list'}`}

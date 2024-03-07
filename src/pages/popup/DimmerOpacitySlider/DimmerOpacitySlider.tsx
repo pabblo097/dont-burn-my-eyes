@@ -22,7 +22,8 @@ const DimmerOpacitySlider = () => {
             justify={'space-between'}
          >
             <Text
-               fontSize={'lg'}
+               fontSize={'md'}
+               fontWeight={'medium'}
                color={'white'}
             >
                Opacity

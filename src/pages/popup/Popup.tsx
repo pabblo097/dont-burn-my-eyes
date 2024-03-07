@@ -15,7 +15,6 @@ const Popup = () => {
          spacing={'3'}
          bgColor={'gray.800'}
          width={300}
-         height={500}
          p={'4'}
          divider={<StackDivider />}
       >

@@ -1,10 +1,11 @@
-import { Container, StackDivider, VStack } from '@chakra-ui/react';
+import { Container, HStack, StackDivider, VStack } from '@chakra-ui/react';
 import Logo from './Logo';
 import DividerWithHeading from './DividerWithHeading';
 import DimmerSwitch from './DimmerSwitch';
 import DimmerOperatingModeSelect from './DimmerOperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
 import Footer from './Footer';
+import DimmerOpacitySlider from '../popup/DimmerOpacitySlider';
 
 const Options = () => {
    return (
@@ -24,7 +25,10 @@ const Options = () => {
                divider={<StackDivider />}
                spacing={4}
             >
-               <DimmerSwitch />
+               <HStack w={'full'}>
+                  <DimmerSwitch />
+                  <DimmerOpacitySlider />
+               </HStack>
 
                <DimmerOperatingModeSelect />
 
