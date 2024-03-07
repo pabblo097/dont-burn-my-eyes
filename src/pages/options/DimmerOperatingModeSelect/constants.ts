@@ -6,15 +6,15 @@ interface InfoMessageWithHighlight {
 }
 
 export const infoMessagesWithHighlight: Record<DimmerOperatingMode, InfoMessageWithHighlight> = {
-   everywhereExcept: {
-      message: `Screen dimmer will be applied everywhere except the URLs specified in the URLs config / Everywhere except section below.`,
-      highlight: ['everywhere except', `URLs config / Everywhere except`],
+   blackList: {
+      message: `Screen dimmer will be applied everywhere except the URLs specified in the URLs config / Black list section below.`,
+      highlight: ['everywhere except', `URLs config / Black list`],
    },
-   onlyOn: {
-      message: `Screen dimmer will be applied only on URLs specified in the URLs config / Only on section below.`,
-      highlight: ['only on', `URLs config / Only on`],
+   whiteList: {
+      message: `Screen dimmer will be applied only on URLs specified in the URLs config / White list section below.`,
+      highlight: ['only on', `URLs config / White list`],
    },
-   everywhere: {
+   alwaysOn: {
       message: `Screen dimmer will be applied everywhere.`,
       highlight: 'everywhere',
    },

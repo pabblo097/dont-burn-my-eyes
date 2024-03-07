@@ -1,22 +1,42 @@
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import {
+   TableContainer,
+   Table,
+   Thead,
+   Tr,
+   Th,
+   Tbody,
+   Td,
+   Center,
+   Heading,
+   Box,
+   Link,
+} from '@chakra-ui/react';
 import { UrlsConfigTableProps } from './constants';
+import useStorage from '@root/src/shared/hooks/useStorage';
+import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 
-const generateDummyData = (quantity: number): number[] => {
-   const dummyData: number[] = [];
+const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
+   const urls = useStorage(getUrlStorage(tableMode));
 
-   for (let i = 0; i < quantity; i++) {
-      dummyData.push(Math.random() * 1000000);
+   if (urls.length === 0) {
+      return (
+         <Box
+            w={'full'}
+            h={'600px'}
+         >
+            <Center p={8}>
+               <Heading>{'No data :('}</Heading>
+            </Center>
+         </Box>
+      );
    }
 
-   return dummyData;
-};
-
-const EverywhereExceptTable = ({ tableMode }: UrlsConfigTableProps) => {
    return (
       <TableContainer
          w={'full'}
          overflowY={'auto'}
          h={'600px'}
+         mt={2}
       >
          <Table variant="simple">
             <Thead
@@ -30,9 +50,16 @@ const EverywhereExceptTable = ({ tableMode }: UrlsConfigTableProps) => {
                </Tr>
             </Thead>
             <Tbody>
-               {generateDummyData(tableMode === 'onlyOn' ? 100 : 5).map((value) => (
-                  <Tr key={value}>
-                     <Td>{value}</Td>
+               {urls.map((url) => (
+                  <Tr key={url}>
+                     <Td>
+                        <Link
+                           href={`http://${url}`}
+                           isExternal
+                        >
+                           {url}
+                        </Link>
+                     </Td>
                      <Td>millimetres (mm)</Td>
                   </Tr>
                ))}
@@ -42,4 +69,4 @@ const EverywhereExceptTable = ({ tableMode }: UrlsConfigTableProps) => {
    );
 };
 
-export default EverywhereExceptTable;
+export default UrlsConfigTable;

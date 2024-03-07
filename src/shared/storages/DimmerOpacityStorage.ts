@@ -15,7 +15,7 @@ const dimmerOpacityStorage: DimmerOpacityStorage = {
    ...storage,
    init: async () => {
       if ((await storage.get()) === undefined) {
-         await storage.set(0.5);
+         await storage.set(50);
       }
    },
 };

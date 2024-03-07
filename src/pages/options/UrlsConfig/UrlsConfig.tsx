@@ -1,7 +1,13 @@
 import { VStack, Tabs, TabList, Tab, TabPanels, TabPanel, Text } from '@chakra-ui/react';
 import UrlsConfigTable from '../UrlsConfigTable';
+import useStorage from '@root/src/shared/hooks/useStorage';
+import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import { useState } from 'react';
 
 const UrlsConfig = () => {
+   const operatingMode = useStorage(dimmerOperatingModeStorage);
+   const [tabIndex, setTabIndex] = useState(operatingMode === 'whiteList' ? 1 : 0);
+
    return (
       <VStack
          w={'full'}
@@ -19,17 +25,19 @@ const UrlsConfig = () => {
             w={'full'}
             isFitted
             variant="enclosed"
+            index={tabIndex}
+            onChange={setTabIndex}
          >
             <TabList>
-               <Tab>Everywhere except</Tab>
-               <Tab>Only on</Tab>
+               <Tab>Black list</Tab>
+               <Tab>White list</Tab>
             </TabList>
             <TabPanels>
-               <TabPanel>
-                  <UrlsConfigTable tableMode="everywhereExcept" />
+               <TabPanel p={0}>
+                  <UrlsConfigTable tableMode="blackList" />
                </TabPanel>
-               <TabPanel>
-                  <UrlsConfigTable tableMode="onlyOn" />
+               <TabPanel p={0}>
+                  <UrlsConfigTable tableMode="whiteList" />
                </TabPanel>
             </TabPanels>
          </Tabs>

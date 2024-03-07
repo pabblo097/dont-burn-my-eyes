@@ -1,30 +1,69 @@
-(async () => {
-   const storage = await chrome.storage.local.get(['isDimmerEnabled', 'dimmerOpacity']);
+type DimmerOperatingMode = 'blackList' | 'whiteList' | 'alwaysOn';
 
-   let isDimmerEnabled = storage.isDimmerEnabled;
-   let dimmerOpacity = storage.dimmerOpacity;
+interface StorageValues {
+   isDimmerEnabled: boolean;
+   dimmerOpacity: number;
+   dimmerOperatingMode: DimmerOperatingMode;
+   blackList: string[];
+   whiteList: string[];
+}
 
+const getOpacityStyle = (shouldApplyDimmer: boolean, dimmerOpacity: number) =>
+   shouldApplyDimmer ? (dimmerOpacity / 100).toString() : '0';
+
+const getShouldApplyDimmer = (
+   isDimmerEnabled: boolean,
+   dimmerOperatingMode: DimmerOperatingMode,
+   blackList: string[],
+   whiteList: string[],
+   currentUrl: string,
+): boolean => {
+   switch (dimmerOperatingMode) {
+      case 'blackList': {
+         return isDimmerEnabled && !blackList.includes(currentUrl);
+      }
+      case 'whiteList': {
+         return isDimmerEnabled && whiteList.includes(currentUrl);
+      }
+      case 'alwaysOn': {
+         return isDimmerEnabled;
+      }
+   }
+};
+
+const createDimmerElement = (shouldApplyDimmer: boolean, dimmerOpacity: number) => {
    const dimmer = document.createElement('div');
    dimmer.id = 'screen-dimmer';
    dimmer.ariaHidden = 'true';
-   dimmer.style.opacity = isDimmerEnabled ? dimmerOpacity : '0';
-   dimmer.style.display = 'block';
-   dimmer.style.zIndex = '2147483647';
-   dimmer.style.margin = '0';
-   dimmer.style.borderRadius = '0';
-   dimmer.style.padding = '0';
-   dimmer.style.background = 'rgb(70, 70, 70)';
-   dimmer.style.pointerEvents = 'none';
-   dimmer.style.position = 'fixed';
-   dimmer.style.top = '-10%';
-   dimmer.style.right = '-10%';
-   dimmer.style.width = '120%';
-   dimmer.style.height = '120%';
-   dimmer.style.mixBlendMode = 'multiply';
-   dimmer.style.transition = '.2s';
+   dimmer.setAttribute(
+      'style',
+      `opacity: ${getOpacityStyle(shouldApplyDimmer, dimmerOpacity)}; display: block; z-index: 2147483647; margin: 0; border-radius: 0; padding: 0; background: rgb(70, 70, 70); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; mix-blend-mode: multiply; transition: .2s`,
+   );
 
-   const html = document.documentElement;
-   html.appendChild(dimmer);
+   return dimmer;
+};
+
+const getValuesFromStorage = async (): Promise<StorageValues> =>
+   (await chrome.storage.local.get()) as StorageValues;
+
+(async () => {
+   console.time('storages');
+   let { isDimmerEnabled, dimmerOpacity, dimmerOperatingMode, blackList, whiteList } =
+      await getValuesFromStorage();
+   console.timeEnd('storages');
+   const currentUrl = window.location.hostname;
+
+   let shouldApplyDimmer: boolean = getShouldApplyDimmer(
+      isDimmerEnabled,
+      dimmerOperatingMode,
+      blackList,
+      whiteList,
+      currentUrl,
+   );
+
+   const dimmer = createDimmerElement(shouldApplyDimmer, dimmerOpacity);
+
+   document.documentElement.appendChild(dimmer);
 
    chrome.storage.local.onChanged.addListener((changes) => {
       if (Object.hasOwn(changes, 'isDimmerEnabled')) {
@@ -35,6 +74,25 @@
          dimmerOpacity = changes.dimmerOpacity.newValue;
       }
 
-      dimmer.style.opacity = isDimmerEnabled ? dimmerOpacity : '0';
+      if (Object.hasOwn(changes, 'dimmerOperatingMode')) {
+         dimmerOperatingMode = changes.dimmerOperatingMode.newValue;
+      }
+
+      if (Object.hasOwn(changes, 'blackList')) {
+         blackList = changes.blackList.newValue;
+      }
+
+      if (Object.hasOwn(changes, 'whiteList')) {
+         whiteList = changes.whiteList.newValue;
+      }
+
+      shouldApplyDimmer = getShouldApplyDimmer(
+         isDimmerEnabled,
+         dimmerOperatingMode,
+         blackList,
+         whiteList,
+         currentUrl,
+      );
+      dimmer.style.opacity = getOpacityStyle(shouldApplyDimmer, dimmerOpacity);
    });
 })();

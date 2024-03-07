@@ -47,22 +47,22 @@ const DimmerOperatingModeSelect = () => {
 
             <Select onChange={handleSelectChange}>
                <option
-                  value="everywhereExcept"
-                  selected={dimmerOperatingMode === 'everywhereExcept'}
+                  value="blackList"
+                  selected={dimmerOperatingMode === 'blackList'}
                >
-                  Everywhere except
+                  Black list
                </option>
                <option
-                  value="onlyOn"
-                  selected={dimmerOperatingMode === 'onlyOn'}
+                  value="whiteList"
+                  selected={dimmerOperatingMode === 'whiteList'}
                >
-                  Only on
+                  White list
                </option>
                <option
-                  value="everywhere"
-                  selected={dimmerOperatingMode === 'everywhere'}
+                  value="alwaysOn"
+                  selected={dimmerOperatingMode === 'alwaysOn'}
                >
-                  Everywhere
+                  Always on
                </option>
             </Select>
          </FormControl>
