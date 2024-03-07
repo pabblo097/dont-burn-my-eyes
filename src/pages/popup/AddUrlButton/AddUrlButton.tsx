@@ -21,9 +21,6 @@ const AddUrlButton = () => {
          await urlsStorage.add(currentUrl);
       }
    };
-   if (operatingMode === 'alwaysOn' || !isWebsite) {
-      return null;
-   }
 
    return (
       <VStack w={'full'}>
@@ -31,13 +28,14 @@ const AddUrlButton = () => {
             fontSize={'md'}
             fontWeight={'medium'}
          >
-            {currentUrl}
+            {isWebsite ? currentUrl : 'Page in not a website.'}
          </Text>
          <Button
             w={'full'}
             colorScheme={isUrlInList ? 'red' : 'blue'}
             justifyContent={'space-between'}
             rightIcon={isUrlInList ? <CloseIcon /> : <AddIcon />}
+            isDisabled={!isWebsite}
             onClick={async () => await handleOnClick()}
          >
             {`${isUrlInList ? 'Remove from' : 'Add to'} ${operatingMode === 'blackList' ? 'Black list' : 'White list'}`}

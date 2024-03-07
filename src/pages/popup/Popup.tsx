@@ -4,8 +4,12 @@ import { VStack, StackDivider } from '@chakra-ui/react';
 import ToggleButton from '@root/src/pages/popup/ToggleButton';
 import DimmerOpacitySlider from './DimmerOpacitySlider';
 import AddUrlButton from './AddUrlButton';
+import useStorage from '@root/src/shared/hooks/useStorage';
+import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
 
 const Popup = () => {
+   const operatingMode = useStorage(dimmerOperatingModeStorage);
+
    return (
       <VStack
          spacing={'3'}
@@ -17,7 +21,7 @@ const Popup = () => {
       >
          <ToggleButton />
 
-         <AddUrlButton />
+         {operatingMode !== 'alwaysOn' && <AddUrlButton />}
 
          <DimmerOpacitySlider />
       </VStack>
