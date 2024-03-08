@@ -6,6 +6,7 @@ import DimmerOpacitySlider from './DimmerOpacitySlider';
 import AddUrlButton from './AddUrlButton';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import Footer from './Footer';
 
 const Popup = () => {
    const operatingMode = useStorage(dimmerOperatingModeStorage);
@@ -23,6 +24,8 @@ const Popup = () => {
          {operatingMode !== 'alwaysOn' && <AddUrlButton />}
 
          <DimmerOpacitySlider />
+
+         <Footer />
       </VStack>
    );
 };

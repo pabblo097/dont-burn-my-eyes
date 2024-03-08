@@ -1,5 +1,5 @@
 import { Button, Text, VStack } from '@chakra-ui/react';
-import { AddIcon, CloseIcon } from '@chakra-ui/icons';
+import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import { useMemo } from 'react';
@@ -34,7 +34,7 @@ const AddUrlButton = () => {
             w={'full'}
             colorScheme={isUrlInList ? 'red' : 'blue'}
             justifyContent={'space-between'}
-            rightIcon={isUrlInList ? <CloseIcon /> : <AddIcon />}
+            rightIcon={isUrlInList ? <DeleteIcon /> : <AddIcon />}
             isDisabled={!isWebsite}
             px={5}
             onClick={async () => await handleOnClick()}
