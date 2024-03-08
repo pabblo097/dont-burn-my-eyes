@@ -67,7 +67,10 @@ const DimmerOperatingModeSelect = () => {
             </Select>
          </FormControl>
 
-         <Alert status="info">
+         <Alert
+            status="info"
+            borderRadius={'md'}
+         >
             <AlertIcon />
 
             <Text>

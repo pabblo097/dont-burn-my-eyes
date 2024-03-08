@@ -33,10 +33,10 @@ const UrlsConfig = () => {
                <Tab>White list</Tab>
             </TabList>
             <TabPanels>
-               <TabPanel p={0}>
+               <TabPanel px={0}>
                   <UrlsConfigTable tableMode="blackList" />
                </TabPanel>
-               <TabPanel p={0}>
+               <TabPanel px={0}>
                   <UrlsConfigTable tableMode="whiteList" />
                </TabPanel>
             </TabPanels>

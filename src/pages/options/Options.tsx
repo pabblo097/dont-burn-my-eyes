@@ -11,9 +11,10 @@ const Options = () => {
    return (
       <Container
          maxW={'container.md'}
-         border={'2px'}
-         borderColor={'gray.600'}
+         bg={'gray.800'}
          p={8}
+         my={4}
+         borderRadius={'lg'}
       >
          <VStack>
             <Logo />
