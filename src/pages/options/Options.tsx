@@ -12,7 +12,8 @@ const Options = () => {
       <Container
          maxW={'container.md'}
          bg={'gray.800'}
-         p={8}
+         px={8}
+         py={4}
          my={4}
          borderRadius={'lg'}
       >

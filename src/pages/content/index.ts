@@ -47,10 +47,8 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
    (await chrome.storage.local.get()) as StorageValues;
 
 (async () => {
-   console.time('storages');
    let { isDimmerEnabled, dimmerOpacity, dimmerOperatingMode, blackList, whiteList } =
       await getValuesFromStorage();
-   console.timeEnd('storages');
    const currentUrl = window.location.hostname;
 
    let shouldApplyDimmer: boolean = getShouldApplyDimmer(
