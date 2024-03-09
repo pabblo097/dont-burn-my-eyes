@@ -1,10 +1,8 @@
-type DimmerOperatingMode = 'blackList' | 'whiteList' | 'alwaysOn';
-
 interface StorageValues {
    isDimmerEnabled: boolean;
    dimmerOpacity: number;
-   dimmerOperatingMode: DimmerOperatingMode;
-   blackList: string[];
+   dimmerOperatingMode: string;
+   blacklist: string[];
    whiteList: string[];
 }
 
@@ -13,16 +11,16 @@ const getOpacityStyle = (shouldApplyDimmer: boolean, dimmerOpacity: number) =>
 
 const getShouldApplyDimmer = (
    isDimmerEnabled: boolean,
-   dimmerOperatingMode: DimmerOperatingMode,
-   blackList: string[],
+   dimmerOperatingMode: string,
+   blacklist: string[],
    whiteList: string[],
    currentUrl: string,
 ): boolean => {
    switch (dimmerOperatingMode) {
-      case 'blackList': {
-         return isDimmerEnabled && !blackList.includes(currentUrl);
+      case 'blacklist': {
+         return isDimmerEnabled && !blacklist.includes(currentUrl);
       }
-      case 'whiteList': {
+      case 'whitelist': {
          return isDimmerEnabled && whiteList.includes(currentUrl);
       }
       case 'alwaysOn': {
@@ -47,14 +45,14 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
    (await chrome.storage.local.get()) as StorageValues;
 
 (async () => {
-   let { isDimmerEnabled, dimmerOpacity, dimmerOperatingMode, blackList, whiteList } =
+   let { isDimmerEnabled, dimmerOpacity, dimmerOperatingMode, blacklist, whiteList } =
       await getValuesFromStorage();
    const currentUrl = window.location.hostname;
 
    let shouldApplyDimmer: boolean = getShouldApplyDimmer(
       isDimmerEnabled,
       dimmerOperatingMode,
-      blackList,
+      blacklist,
       whiteList,
       currentUrl,
    );
@@ -76,8 +74,8 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
          dimmerOperatingMode = changes.dimmerOperatingMode.newValue;
       }
 
-      if (Object.hasOwn(changes, 'blackList')) {
-         blackList = changes.blackList.newValue;
+      if (Object.hasOwn(changes, 'blacklist')) {
+         blacklist = changes.blacklist.newValue;
       }
 
       if (Object.hasOwn(changes, 'whiteList')) {
@@ -87,7 +85,7 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
       shouldApplyDimmer = getShouldApplyDimmer(
          isDimmerEnabled,
          dimmerOperatingMode,
-         blackList,
+         blacklist,
          whiteList,
          currentUrl,
       );

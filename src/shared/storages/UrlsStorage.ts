@@ -26,22 +26,22 @@ const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActio
 
 export type UrlsStorage = BaseStorage<string[]> & UrlsStorageActions;
 
-const baseBlackListStorage = createStorage<string[]>('blackList', {
+const baseBlacklistStorage = createStorage<string[]>('blacklist', {
    storageType: StorageType.Local,
    liveUpdate: true,
 });
 
-const baseWhiteListStorage = createStorage<string[]>('whiteList', {
+const baseWhitelistStorage = createStorage<string[]>('whitelist', {
    storageType: StorageType.Local,
    liveUpdate: true,
 });
 
-export const blackListStorage: UrlsStorage = {
-   ...baseBlackListStorage,
-   ...getUrlsStorageActions(baseBlackListStorage),
+export const blacklistStorage: UrlsStorage = {
+   ...baseBlacklistStorage,
+   ...getUrlsStorageActions(baseBlacklistStorage),
 };
 
-export const whiteListStorage: UrlsStorage = {
-   ...baseWhiteListStorage,
-   ...getUrlsStorageActions(baseWhiteListStorage),
+export const whitelistStorage: UrlsStorage = {
+   ...baseWhitelistStorage,
+   ...getUrlsStorageActions(baseWhitelistStorage),
 };

@@ -3,6 +3,7 @@ import Popup from '@pages/popup/Popup';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@root/src/shared/chakraTheme';
+import setHtmlLang from '@root/src/shared/helpers/setHtmlLang';
 
 refreshOnUpdate('pages/popup');
 
@@ -20,3 +21,4 @@ function init() {
 }
 
 init();
+setHtmlLang();

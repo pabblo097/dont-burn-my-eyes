@@ -5,6 +5,8 @@ import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatin
 import { useMemo } from 'react';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
+import t from '@root/src/shared/helpers/t';
+import { getButtonLabel } from './helpers';
 
 const AddUrlButton = () => {
    const operatingMode = useStorage(dimmerOperatingModeStorage);
@@ -28,7 +30,7 @@ const AddUrlButton = () => {
             fontSize={'md'}
             fontWeight={'medium'}
          >
-            {isWebsite ? currentUrl : 'Page in not a website.'}
+            {isWebsite ? currentUrl : t('websiteNotSupported')}
          </Text>
          <Button
             w={'full'}
@@ -39,7 +41,7 @@ const AddUrlButton = () => {
             px={5}
             onClick={async () => await handleOnClick()}
          >
-            {`${isUrlInList ? 'Remove from' : 'Add to'} ${operatingMode === 'blackList' ? 'Black list' : 'White list'}`}
+            {getButtonLabel(isUrlInList, operatingMode)}
          </Button>
       </VStack>
    );

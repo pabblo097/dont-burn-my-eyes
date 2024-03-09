@@ -1,0 +1,138 @@
+{
+   "extensionDescription": {
+      "description": "Extension description.",
+      "message": "Ulżyj swoim oczom przyciemniając zbyt jasną stronę internetową z Don't Burn My Eyes."
+   },
+   "extensionName": {
+      "description": "Extension name. Do not translate this.",
+      "message": "Don't Burn My Eyes"
+   },
+   "off": {
+      "description": "Label of the screen dimmer switch-off button.",
+      "message": "Wył."
+   },
+   "on": {
+      "description": "Label of the screen dimmer switch-on button",
+      "message": "Wł."
+   },
+   "websiteNotSupported": {
+      "description": "Message indicating that the website is not supported.",
+      "message": "Ta strona nie jest obsługiwana."
+   },
+   "addToBlackList": {
+      "description": "Label of the blacklist add button.",
+      "message": "Dodaj do czarnej listy"
+   },
+   "removeFromBlackList": {
+      "description": "Label of the blacklist remove button.",
+      "message": "Usuń z czarnej listy"
+   },
+   "addToWhiteList": {
+      "description": "Label of the whitelist add button.",
+      "message": "Dodaj do białej listy"
+   },
+   "removeFromWhiteList": {
+      "description": "Label of the whitelist remove button.",
+      "message": "Usuń z białej listy"
+   },
+   "intensity": {
+      "description": "Label of the intensity slider.",
+      "message": "Intensywność"
+   },
+   "donate": {
+      "description": "Label of the donate link.",
+      "message": "Przekaż darowizne"
+   },
+   "settings": {
+      "description": "Label of the settings open button and settings page header.",
+      "message": "Ustawienia"
+   },
+   "openSettingsAriaLabel": {
+      "description": "Aria label of the settings open button.",
+      "message": "Otwórz ustawienia"
+   },
+   "enableScreenDimmer": {
+      "description": "Label of the screen dimmer switch.",
+      "message": "Włącz przyciemnianie ekranu"
+   },
+   "operatingMode": {
+      "description": "Label of the operating mode select.",
+      "message": "Tryb działania"
+   },
+   "blackList": {
+      "description": "Label of the blacklist operating mode. Used in operating mode select and URLs config tab.",
+      "message": "Czarna lista"
+   },
+   "whiteList": {
+      "description": "Label of the whitelist operating mode. Used in operating mode select and URLs config tab.",
+      "message": "Biała lista"
+   },
+   "alwaysOn": {
+      "description": "Label of the always on operating mode. Used in operating mode select.",
+      "message": "Zawsze włączony"
+   },
+   "blacklistMessage": {
+      "description": "Message explaining how the blacklist mode works.",
+      "message": "Przyciemnianie ekranu będzie stosowane wszędzie z wyjątkiem adresów URL określonych w sekcji Konfiguracja adresów URL / Czarna lista."
+   },
+   "blacklistMessageHighlight1": {
+      "description": "First highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
+      "message": "wszędzie z wyjątkiem"
+   },
+   "blacklistMessageHighlight2": {
+      "description": "Second highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
+      "message": "Konfiguracja adresów URL / Czarna lista"
+   },
+   "whitelistMessage": {
+      "description": "Message explaining how the whitelist mode works.",
+      "message": "Przyciemnianie ekranu będzie stosowane tylko do adresów URL określonych w sekcji Konfiguracja adresów URL / Biała lista."
+   },
+   "whitelistMessageHighlight1": {
+      "description": "First highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
+      "message": "tylko do"
+   },
+   "whitelistMessageHighlight2": {
+      "description": "Second highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
+      "message": "Konfiguracja adresów URL / Biała lista"
+   },
+   "alwaysOnMessage": {
+      "description": "Message explaining how the always on mode works.",
+      "message": "Przyciemnianie ekranu będzie stosowane wszędzie."
+   },
+   "alwaysOnMessageHighlight": {
+      "description": "Highlight in the whitelist message. It has to be substring of always on message. Letter size does matter.",
+      "message": "wszędzie"
+   },
+   "urlsConfig": {
+      "description": "Label of the URLs config section",
+      "message": "Konfiguracja adresów URL"
+   },
+   "noUrlsToDisplay": {
+      "description": "Label of the no URLs to display header",
+      "message": "Nie dodano jeszcze żadnego adresu URL."
+   },
+   "addUrlInPopup": {
+      "description": "Label of the no URLs to display message",
+      "message": "Możesz dodać adres URL w wyskakującym menu."
+   },
+   "searchUrl": {
+      "description": "Placeholder of the search URL input.",
+      "message": "Szukaj adresu URL"
+   },
+   "cleanSearchUrlInputAriaLabel": {
+      "description": "Aria label of clean search URL input button.",
+      "message": "Wyczyść input szukaj adresu URL"
+   },
+   "travoltaMemeAlt": {
+      "description": "Alternate text of the travolta image.",
+      "message": "Zdezorientowany John Travolta mem"
+   },
+   "removeUrlAriaLabel": {
+      "description": "Aria label of remove URL button.",
+      "message": "Usuń adres URL"
+   },
+   "thankYou": {
+      "description": "This is not used anywhere. Thanks for translation. Leave message bellow if you want :)",
+      "message": "Your message."
+   }
+}

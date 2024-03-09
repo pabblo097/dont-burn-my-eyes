@@ -1,6 +1,6 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
 
-const dimmerOperatingModes = ['blackList', 'whiteList', 'alwaysOn'] as const;
+const dimmerOperatingModes = ['blacklist', 'whitelist', 'alwaysOn'] as const;
 
 export type DimmerOperatingMode = (typeof dimmerOperatingModes)[number];
 
@@ -24,7 +24,7 @@ const dimmerOperatingModeStorage: DimmerOperatingModeStorage = {
    ...storage,
    init: async () => {
       if ((await storage.get()) === undefined) {
-         await storage.set('blackList');
+         await storage.set('blacklist');
       }
    },
 };

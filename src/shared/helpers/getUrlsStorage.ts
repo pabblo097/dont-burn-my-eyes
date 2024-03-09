@@ -1,13 +1,13 @@
-import { blackListStorage, whiteListStorage } from '../storages/UrlsStorage';
+import { blacklistStorage, whitelistStorage } from '../storages/UrlsStorage';
 import { DimmerOperatingMode } from '../storages/DimmerOperatingModeStorage';
 
 const getUrlStorage = (operatingMode: DimmerOperatingMode) => {
    switch (operatingMode) {
-      case 'blackList': {
-         return blackListStorage;
+      case 'blacklist': {
+         return blacklistStorage;
       }
-      case 'whiteList': {
-         return whiteListStorage;
+      case 'whitelist': {
+         return whitelistStorage;
       }
       case 'alwaysOn': {
          return null;

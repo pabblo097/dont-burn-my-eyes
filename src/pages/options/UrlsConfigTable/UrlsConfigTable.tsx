@@ -21,6 +21,7 @@ import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import { CloseIcon, DeleteIcon, ExternalLinkIcon, SearchIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import travolta from '@root/src/assets/img/travolta.png';
+import t from '@root/src/shared/helpers/t';
 
 const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
    const [searchValue, setSearchValue] = useState('');
@@ -40,10 +41,10 @@ const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
                <Image
                   boxSize={'200px'}
                   src={travolta}
-                  alt="Confused Travolta"
+                  alt={t('travoltaMemeAlt')}
                />
-               <Heading>{`There's no URLs to display.`}</Heading>
-               <Text fontSize={'md'}>{`You can add URL in popup menu.`}</Text>
+               <Heading textAlign={'center'}>{t('noUrlsToDisplay')}</Heading>
+               <Text fontSize={'md'}>{t('addUrlInPopup')}</Text>
             </VStack>
          </Center>
       );
@@ -58,11 +59,11 @@ const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
             <Input
                value={searchValue}
                onChange={(event) => setSearchValue(event.target.value)}
-               placeholder="Search URL"
+               placeholder={t('searchUrl')}
             />
             <InputRightElement>
                <IconButton
-                  aria-label={'Clean input'}
+                  aria-label={t('cleanSearchUrlInputAriaLabel')}
                   icon={<CloseIcon />}
                   variant={'ghost'}
                   size={'xs'}
@@ -106,7 +107,7 @@ const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
                      <IconButton
                         colorScheme={'red'}
                         variant={'ghost'}
-                        aria-label={'Delete URL'}
+                        aria-label={t('removeUrlAriaLabel')}
                         icon={<DeleteIcon />}
                         size={'sm'}
                         mr={4}

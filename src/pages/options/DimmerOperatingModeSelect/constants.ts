@@ -1,3 +1,4 @@
+import t from '@root/src/shared/helpers/t';
 import { DimmerOperatingMode } from '@root/src/shared/storages/DimmerOperatingModeStorage';
 
 interface InfoMessageWithHighlight {
@@ -6,16 +7,16 @@ interface InfoMessageWithHighlight {
 }
 
 export const infoMessagesWithHighlight: Record<DimmerOperatingMode, InfoMessageWithHighlight> = {
-   blackList: {
-      message: `Screen dimmer will be applied everywhere except the URLs specified in the URLs config / Black list section below.`,
-      highlight: ['everywhere except', `URLs config / Black list`],
+   blacklist: {
+      message: t('blacklistMessage'),
+      highlight: [t('blacklistMessageHighlight1'), t('blacklistMessageHighlight2')],
    },
-   whiteList: {
-      message: `Screen dimmer will be applied only on URLs specified in the URLs config / White list section below.`,
-      highlight: ['only on', `URLs config / White list`],
+   whitelist: {
+      message: t('whitelistMessage'),
+      highlight: [t('whitelistMessageHighlight1'), t('whitelistMessageHighlight2')],
    },
    alwaysOn: {
-      message: `Screen dimmer will be applied everywhere.`,
-      highlight: 'everywhere',
+      message: t('alwaysOnMessage'),
+      highlight: t('alwaysOnMessageHighlight'),
    },
 };

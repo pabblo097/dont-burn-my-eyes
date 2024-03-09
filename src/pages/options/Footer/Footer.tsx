@@ -1,5 +1,6 @@
 import { VStack, HStack, Icon, Text } from '@chakra-ui/react';
 import IconButtonLink from '@root/src/shared/components';
+import t from '@root/src/shared/helpers/t';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { FaDonate } from 'react-icons/fa';
 
@@ -11,7 +12,7 @@ const Footer = () => {
          align={'center'}
          spacing={2}
       >
-         <Text color={'gray.500'}>Created by Paweł Wiewióra</Text>
+         <Text color={'gray.500'}>Paweł Wiewióra &copy; 2024</Text>
          <HStack align={'center'}>
             <IconButtonLink
                isExternal
@@ -38,7 +39,7 @@ const Footer = () => {
             <IconButtonLink
                isExternal
                href={'https://paypal.me/pabblo097'}
-               tooltipLabel={'Donate'}
+               tooltipLabel={t('donate')}
                icon={
                   <Icon
                      as={FaDonate}

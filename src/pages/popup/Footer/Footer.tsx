@@ -1,6 +1,7 @@
 import { SettingsIcon } from '@chakra-ui/icons';
 import { Flex, HStack, Icon, IconButton, Tooltip } from '@chakra-ui/react';
 import IconButtonLink from '@root/src/shared/components';
+import t from '@root/src/shared/helpers/t';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { FaDonate } from 'react-icons/fa';
 
@@ -37,7 +38,7 @@ const Footer = () => {
             <IconButtonLink
                isExternal
                href={'https://paypal.me/pabblo097'}
-               tooltipLabel={'Donate'}
+               tooltipLabel={t('donate')}
                icon={
                   <Icon
                      as={FaDonate}
@@ -47,12 +48,12 @@ const Footer = () => {
             />
          </HStack>
 
-         <Tooltip label={'Settings'}>
+         <Tooltip label={t('settings')}>
             <IconButton
                variant={'link'}
                boxSize={'32px'}
                size={'sm'}
-               aria-label={'Open settings'}
+               aria-label={t('openSettingsAriaLabel')}
                _hover={{ color: 'blue.100' }}
                icon={<SettingsIcon boxSize={'24px'} />}
                onClick={() => chrome.runtime.openOptionsPage()}

@@ -14,6 +14,7 @@ import dimmerOperatingModeStorage, {
 } from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import { ChangeEvent } from 'react';
 import { infoMessagesWithHighlight } from './constants';
+import t from '@root/src/shared/helpers/t';
 
 const DimmerOperatingModeSelect = () => {
    const dimmerOperatingMode = useStorage(dimmerOperatingModeStorage);
@@ -38,31 +39,34 @@ const DimmerOperatingModeSelect = () => {
             alignItems="center"
          >
             <FormLabel
-               htmlFor="dimmer-switch"
+               htmlFor="dimmer-operating-mode"
                mb="0"
                flexShrink={0}
             >
-               Operating mode
+               {t('operatingMode')}
             </FormLabel>
 
-            <Select onChange={handleSelectChange}>
+            <Select
+               id={'dimmer-operating-mode'}
+               onChange={handleSelectChange}
+            >
                <option
-                  value="blackList"
-                  selected={dimmerOperatingMode === 'blackList'}
+                  value="blacklist"
+                  selected={dimmerOperatingMode === 'blacklist'}
                >
-                  Black list
+                  {t('blacklist')}
                </option>
                <option
-                  value="whiteList"
-                  selected={dimmerOperatingMode === 'whiteList'}
+                  value="whitelist"
+                  selected={dimmerOperatingMode === 'whitelist'}
                >
-                  White list
+                  {t('whitelist')}
                </option>
                <option
                   value="alwaysOn"
                   selected={dimmerOperatingMode === 'alwaysOn'}
                >
-                  Always on
+                  {t('alwaysOn')}
                </option>
             </Select>
          </FormControl>
