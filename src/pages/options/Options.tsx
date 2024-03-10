@@ -1,13 +1,19 @@
 import { Container, HStack, StackDivider, VStack } from '@chakra-ui/react';
-import Logo from './Logo';
 import DividerWithHeading from './DividerWithHeading';
 import DimmerSwitch from './DimmerSwitch';
 import DimmerOperatingModeSelect from './DimmerOperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
 import Footer from './Footer';
 import DimmerOpacitySlider from '../popup/DimmerOpacitySlider';
+import Logo from '@root/src/shared/components/Logo';
+import useStorage from '@root/src/shared/hooks/useStorage';
+import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
+import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
 
 const Options = () => {
+   const isDimmerEnabled = useStorage(dimmerStateStorage);
+   const dimmerOpacity = useStorage(dimmerOpacityStorage);
+
    return (
       <Container
          maxW={'container.md'}
@@ -18,7 +24,7 @@ const Options = () => {
          borderRadius={'lg'}
       >
          <VStack>
-            <Logo />
+            <Logo areRedPathsVisible={!isDimmerEnabled || dimmerOpacity === 0} />
 
             <DividerWithHeading />
 
