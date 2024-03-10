@@ -1,5 +1,5 @@
 import { VStack, HStack, Icon, Text } from '@chakra-ui/react';
-import IconButtonLink from '@root/src/shared/components';
+import IconButtonLink from '@root/src/shared/components/IconButtonLink';
 import t from '@root/src/shared/helpers/t';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { FaDonate } from 'react-icons/fa';
