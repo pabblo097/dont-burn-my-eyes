@@ -1,9 +1,11 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
+import lodash from 'lodash-es';
 
 interface UrlsStorageActions {
    add: (value: string) => Promise<void>;
    remove: (value: string) => Promise<void>;
    init: () => Promise<void>;
+   merge: (values: string[]) => Promise<void>;
 }
 
 const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActions => ({
@@ -21,6 +23,11 @@ const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActio
       if ((await storage.get()) === undefined) {
          await storage.set([]);
       }
+   },
+   merge: async (values: string[]) => {
+      await storage.set((currentState) => {
+         return lodash.union(currentState, values);
+      });
    },
 });
 

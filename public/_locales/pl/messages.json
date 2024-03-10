@@ -113,7 +113,7 @@
    },
    "addUrlInPopup": {
       "description": "Label of the no URLs to display message",
-      "message": "Możesz dodać adres URL w wyskakującym menu."
+      "message": "Możesz dodać adres URL w wyskakującym menu lub zaimportować z pliku."
    },
    "searchUrl": {
       "description": "Placeholder of the search URL input.",
@@ -130,6 +130,42 @@
    "removeUrlAriaLabel": {
       "description": "Aria label of remove URL button.",
       "message": "Usuń adres URL"
+   },
+   "syncMenuButton": {
+      "description": "Label of the sync meny trigger button.",
+      "message": "Synchronizacja"
+   },
+   "syncMenuExport": {
+      "description": "Label of the export option in sync menu.",
+      "message": "Eksportuj adresy URL"
+   },
+   "syncMenuImport": {
+      "description": "Label of the import option in sync menu.",
+      "message": "Importuj adresy URL"
+   },
+   "wrongDataDialogTitle": {
+      "description": "Title of the wrong import data dialog.",
+      "message": "Niepoprawne dane"
+   },
+   "wrongDataDialogMessage": {
+      "description": "Message in the wrong import data dialog.",
+      "message": "Wprowadzono niepoprawne dane. Dane powinny zawierać liste adresów URL oraz być w formacie JSON."
+   },
+   "importSuccessDialogTitle": {
+      "description": "Title of the import urls success dialog.",
+      "message": "Sukces"
+   },
+   "importSuccessDialogMessage": {
+      "description": "Message in the import urls success dialog.",
+      "message": "Import adresów URL zakończony pomyslnie."
+   },
+   "confirmDialogButtonLabel": {
+      "description": "Label of the confirm button in dialog.",
+      "message": "Ok"
+   },
+   "closeDialogButtonAriaLabel": {
+      "description": "Label of the confirm button in dialog.",
+      "message": "Zamknij dialog"
    },
    "thankYou": {
       "description": "This is not used anywhere. Thanks for translation. Leave message bellow if you want :)",
