@@ -19,7 +19,7 @@ const UrlsConfig = () => {
             fontWeight={'medium'}
             alignSelf={'self-start'}
          >
-            {`URL's config`}
+            {t('urlsConfig')}
          </Text>
 
          <Tabs
