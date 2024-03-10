@@ -23,10 +23,11 @@ const manifest = {
    },
    action: {
       default_popup: 'src/pages/popup/index.html',
-      default_icon: 'icon-34.png',
    },
    icons: {
       128: 'icon-128.png',
+      48: 'icon-48.png',
+      16: 'icon-16.png',
    },
    content_scripts: [
       {
