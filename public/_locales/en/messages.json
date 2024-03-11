@@ -167,6 +167,22 @@
       "description": "Label of the confirm button in dialog.",
       "message": "Close dialog"
    },
+   "narrowDownButton": {
+      "description": "Label of the narrow down selected url button.",
+      "message": "Narrow down"
+   },
+   "expandButton": {
+      "description": "Label of the expand selected url button.",
+      "message": "Expand"
+   },
+   "addedSubUrls": {
+      "description": "Label of the added sub-urls section.",
+      "message": "Added sub-urls"
+   },
+   "removeSubUrlsButtonAriaLabel": {
+      "description": "Aria label of the remove sub-url button.",
+      "message": "Remove sub-url"
+   },
    "thankYou": {
       "description": "This is not used anywhere. Thanks for translation. Leave message bellow if you want :)",
       "message": "Your message."

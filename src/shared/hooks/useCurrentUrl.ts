@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
 
 const useCurrentUrl = () => {
-   const [currentUrl, setCurrentUrl] = useState<string>(null);
+   const [splitUrl, setSplitUrl] = useState<string[]>([]);
    const [isWebsite, setIsWebsite] = useState<boolean>(null);
 
    useEffect(() => {
       const getCurrentUrl = async () => {
          const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
-         const splittedUrl = tab.url.split('/');
+         const splitUrl = tab.url.split('?')[0].split('/');
+         const filteredSplitUrl = splitUrl.filter((url) => !url.includes('http') && url !== '');
 
-         setIsWebsite(splittedUrl[0].includes('http'));
-         setCurrentUrl(splittedUrl[2]);
+         setIsWebsite(splitUrl[0].includes('http'));
+         setSplitUrl(filteredSplitUrl);
       };
 
       getCurrentUrl();
    }, []);
 
-   return { currentUrl, isWebsite };
+   return { splitUrl, isWebsite };
 };
 
 export default useCurrentUrl;

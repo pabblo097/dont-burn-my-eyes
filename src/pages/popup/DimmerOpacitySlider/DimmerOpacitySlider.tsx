@@ -17,7 +17,13 @@ const DimmerOpacitySlider = () => {
    const dimmerOpacity = useStorage(dimmerOpacityStorage);
 
    return (
-      <VStack w={'full'}>
+      <VStack
+         w={'full'}
+         bg={'gray.700'}
+         borderRadius={'md'}
+         py={2}
+         px={3}
+      >
          <Flex
             w={'full'}
             justify={'space-between'}
@@ -36,7 +42,7 @@ const DimmerOpacitySlider = () => {
          <Slider
             aria-label={t('intensity')}
             value={dimmerOpacity}
-            onChange={async (value) => await dimmerOpacityStorage.set(value)}
+            onChange={(value) => dimmerOpacityStorage.set(value)}
          >
             <SliderTrack>
                <SliderFilledTrack />

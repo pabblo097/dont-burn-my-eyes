@@ -167,7 +167,7 @@ const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
             <Box
                w={'full'}
                overflowY={'auto'}
-               maxH={'530px'}
+               maxH={'500px'}
                py={2}
             >
                <VStack

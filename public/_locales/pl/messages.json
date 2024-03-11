@@ -167,6 +167,22 @@
       "description": "Label of the confirm button in dialog.",
       "message": "Zamknij dialog"
    },
+   "narrowDownButton": {
+      "description": "Label of the narrow down selected url button.",
+      "message": "Zawęź"
+   },
+   "expandButton": {
+      "description": "Label of the expand selected url button.",
+      "message": "Rozszerz"
+   },
+   "addedSubUrls": {
+      "description": "Label of the added sub-urls section.",
+      "message": "Dodane podstrony"
+   },
+   "removeSubUrlsButtonAriaLabel": {
+      "description": "Aria label of the remove sub-url button.",
+      "message": "Usuń podstrone"
+   },
    "thankYou": {
       "description": "This is not used anywhere. Thanks for translation. Leave message bellow if you want :)",
       "message": "Your message."
