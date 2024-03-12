@@ -1,6 +1,6 @@
 import { Button, HStack, IconButton, Text, Tooltip, VStack } from '@chakra-ui/react';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
 import t from '@root/src/shared/helpers/t';
@@ -12,7 +12,7 @@ import interleave from '@root/src/shared/helpers/interleave';
 
 const AddUrlButton = () => {
    const [urlLevel, setUrlLevel] = useState(0);
-   const operatingMode = useStorage(dimmerOperatingModeStorage);
+   const operatingMode = useStorage(operatingModeStorage);
    const urlsStorage = getUrlStorage(operatingMode);
    const urls = useStorage(urlsStorage);
    const { splitUrl, isWebsite } = useCurrentUrl();

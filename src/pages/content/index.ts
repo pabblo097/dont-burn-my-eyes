@@ -1,7 +1,7 @@
 interface StorageValues {
    mainSwitch: boolean;
    intensity: number;
-   dimmerOperatingMode: string;
+   operatingMode: string;
    blacklist: string[];
    whitelist: string[];
 }
@@ -18,12 +18,12 @@ const getOpacityStyle = (shouldApplyDimmer: boolean, intensity: number) =>
 
 const getShouldApplyDimmer = (
    mainSwitch: boolean,
-   dimmerOperatingMode: string,
+   operatingMode: string,
    blacklist: string[],
    whitelist: string[],
    currentUrl: string,
 ): boolean => {
-   switch (dimmerOperatingMode) {
+   switch (operatingMode) {
       case 'blacklist': {
          return mainSwitch && !blacklist.some((url) => currentUrl.includes(url));
       }
@@ -52,13 +52,13 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
    (await chrome.storage.local.get()) as StorageValues;
 
 (async () => {
-   let { mainSwitch, intensity, dimmerOperatingMode, blacklist, whitelist } =
+   let { mainSwitch, intensity, operatingMode, blacklist, whitelist } =
       await getValuesFromStorage();
    const currentUrl = window.location.href;
 
    let shouldApplyDimmer: boolean = getShouldApplyDimmer(
       mainSwitch,
-      dimmerOperatingMode,
+      operatingMode,
       blacklist,
       whitelist,
       currentUrl,
@@ -77,8 +77,8 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
          intensity = changes.intensity.newValue;
       }
 
-      if (Object.hasOwn(changes, 'dimmerOperatingMode')) {
-         dimmerOperatingMode = changes.dimmerOperatingMode.newValue;
+      if (Object.hasOwn(changes, 'operatingMode')) {
+         operatingMode = changes.operatingMode.newValue;
       }
 
       if (Object.hasOwn(changes, 'blacklist')) {
@@ -91,7 +91,7 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
 
       shouldApplyDimmer = getShouldApplyDimmer(
          mainSwitch,
-         dimmerOperatingMode,
+         operatingMode,
          blacklist,
          whitelist,
          currentUrl,

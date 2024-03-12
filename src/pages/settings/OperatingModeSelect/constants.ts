@@ -1,12 +1,12 @@
 import t from '@root/src/shared/helpers/t';
-import { DimmerOperatingMode } from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import { OperatingMode } from '@root/src/shared/storages/OperatingModeStorage';
 
 interface InfoMessageWithHighlight {
    message: string;
    highlight: string | string[];
 }
 
-export const infoMessagesWithHighlight: Record<DimmerOperatingMode, InfoMessageWithHighlight> = {
+export const infoMessagesWithHighlight: Record<OperatingMode, InfoMessageWithHighlight> = {
    blacklist: {
       message: t('blacklistMessage'),
       highlight: [t('blacklistMessageHighlight1'), t('blacklistMessageHighlight2')],

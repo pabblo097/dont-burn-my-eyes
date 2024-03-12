@@ -5,12 +5,12 @@ import PopupMainSwitch from '@root/src/pages/popup/PopupMainSwitch';
 import PopupIntensitySlider from './PopupIntensitySlider';
 import AddUrlButton from './AddUrlButton';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
 import Footer from './Footer';
 import Logo from '@root/src/shared/components/Logo';
 
 const Popup = () => {
-   const operatingMode = useStorage(dimmerOperatingModeStorage);
+   const operatingMode = useStorage(operatingModeStorage);
 
    return (
       <VStack

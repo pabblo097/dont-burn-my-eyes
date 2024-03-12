@@ -9,24 +9,24 @@ import {
    Text,
 } from '@chakra-ui/react';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerOperatingModeStorage, {
-   isDimmerOperatingMode,
-} from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import operatingModeStorage, {
+   isOperatingMode,
+} from '@root/src/shared/storages/OperatingModeStorage';
 import { ChangeEvent } from 'react';
 import { infoMessagesWithHighlight } from './constants';
 import t from '@root/src/shared/helpers/t';
 
-const DimmerOperatingModeSelect = () => {
-   const dimmerOperatingMode = useStorage(dimmerOperatingModeStorage);
+const OperatingModeSelect = () => {
+   const dimmerOperatingMode = useStorage(operatingModeStorage);
 
    const { message, highlight } = infoMessagesWithHighlight[dimmerOperatingMode];
 
    const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-      if (!isDimmerOperatingMode(event.target.value)) {
+      if (!isOperatingMode(event.target.value)) {
          return;
       }
 
-      dimmerOperatingModeStorage.set(event.target.value);
+      operatingModeStorage.set(event.target.value);
    };
 
    return (
@@ -90,4 +90,4 @@ const DimmerOperatingModeSelect = () => {
    );
 };
 
-export default DimmerOperatingModeSelect;
+export default OperatingModeSelect;

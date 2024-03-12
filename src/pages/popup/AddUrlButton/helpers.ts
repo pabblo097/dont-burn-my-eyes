@@ -1,7 +1,7 @@
 import t from '@root/src/shared/helpers/t';
-import { DimmerOperatingMode } from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import { OperatingMode } from '@root/src/shared/storages/OperatingModeStorage';
 
-export const getButtonLabel = (isUrlInList: boolean, operatingMode: DimmerOperatingMode) => {
+export const getButtonLabel = (isUrlInList: boolean, operatingMode: OperatingMode) => {
    switch (operatingMode) {
       case 'blacklist': {
          return isUrlInList ? t('removeFromBlackList') : t('addToBlackList');

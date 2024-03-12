@@ -1,6 +1,6 @@
-import { DimmerOperatingMode } from '@root/src/shared/storages/DimmerOperatingModeStorage';
+import { OperatingMode } from '@root/src/shared/storages/OperatingModeStorage';
 
-export type TabMode = Exclude<DimmerOperatingMode, 'alwaysOn'>;
+export type TabMode = Exclude<OperatingMode, 'alwaysOn'>;
 
 export interface UrlsConfigTabProps {
    tabMode: TabMode;
