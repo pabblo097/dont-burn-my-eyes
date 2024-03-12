@@ -1,9 +1,7 @@
 import { SettingsIcon } from '@chakra-ui/icons';
-import { Flex, HStack, Icon, IconButton, Tooltip } from '@chakra-ui/react';
-import IconButtonLink from '@root/src/shared/components/IconButtonLink';
+import { Flex, IconButton, Tooltip } from '@chakra-ui/react';
+import FooterLinks from '@root/src/shared/components/FooterLinks';
 import t from '@root/src/shared/helpers/t';
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FaDonate } from 'react-icons/fa';
 
 const Footer = () => {
    return (
@@ -12,41 +10,7 @@ const Footer = () => {
          align={'center'}
          w={'full'}
       >
-         <HStack align={'center'}>
-            <IconButtonLink
-               isExternal
-               href={'https://github.com/pabblo097'}
-               tooltipLabel={'GitHub'}
-               icon={
-                  <Icon
-                     as={BsGithub}
-                     boxSize={'24px'}
-                  />
-               }
-            />
-            <IconButtonLink
-               isExternal
-               href={'https://www.linkedin.com/in/pawel--wiewiora/'}
-               tooltipLabel={'LinkedIn'}
-               icon={
-                  <Icon
-                     as={BsLinkedin}
-                     boxSize={'24px'}
-                  />
-               }
-            />
-            <IconButtonLink
-               isExternal
-               href={'https://paypal.me/pabblo097'}
-               tooltipLabel={t('donate')}
-               icon={
-                  <Icon
-                     as={FaDonate}
-                     boxSize={'24px'}
-                  />
-               }
-            />
-         </HStack>
+         <FooterLinks />
 
          <Tooltip label={t('settings')}>
             <IconButton
