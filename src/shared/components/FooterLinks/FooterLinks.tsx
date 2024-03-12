@@ -9,7 +9,7 @@ const FooterLinks = () => {
       <HStack align={'center'}>
          <IconButtonLink
             isExternal
-            href={'https://github.com/pabblo097'}
+            href={'https://github.com/pabblo097/dont-burn-my-eyes'}
             tooltipLabel={'GitHub'}
             icon={
                <Icon
