@@ -1,5 +1,5 @@
 import { VStack, Tabs, TabList, Tab, TabPanels, TabPanel, Text } from '@chakra-ui/react';
-import UrlsConfigTable from '../UrlsConfigTable';
+import UrlsConfigTab from '../UrlsConfigTab';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import { useState } from 'react';
@@ -35,10 +35,10 @@ const UrlsConfig = () => {
             </TabList>
             <TabPanels>
                <TabPanel px={0}>
-                  <UrlsConfigTable tableMode="blacklist" />
+                  <UrlsConfigTab tabMode="blacklist" />
                </TabPanel>
                <TabPanel px={0}>
-                  <UrlsConfigTable tableMode="whitelist" />
+                  <UrlsConfigTab tabMode="whitelist" />
                </TabPanel>
             </TabPanels>
          </Tabs>

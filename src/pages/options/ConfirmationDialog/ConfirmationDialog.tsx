@@ -11,16 +11,22 @@ import {
 import { useRef } from 'react';
 import { ConfirmationDialogProps } from './constants';
 import t from '@root/src/shared/helpers/t';
+import useDialog from '@root/src/shared/hooks/useDialog';
 
-const ConfirmationDialog = ({ isOpen, onClose, title, message }: ConfirmationDialogProps) => {
+const ConfirmationDialog = ({ id, title, message }: ConfirmationDialogProps) => {
+   const { closeDialog, getIsDialogOpen } = useDialog();
+
    const cancelRef = useRef();
+
+   const onClose = () => closeDialog(id);
 
    return (
       <AlertDialog
+         id={id}
          motionPreset="slideInBottom"
          leastDestructiveRef={cancelRef}
          onClose={onClose}
-         isOpen={isOpen}
+         isOpen={getIsDialogOpen(id)}
          isCentered
       >
          <AlertDialogOverlay />

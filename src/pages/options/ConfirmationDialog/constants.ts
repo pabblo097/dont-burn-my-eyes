@@ -1,6 +1,5 @@
 export interface ConfirmationDialogProps {
-   isOpen: boolean;
+   id: string;
    title: string;
    message: string;
-   onClose: () => void;
 }
