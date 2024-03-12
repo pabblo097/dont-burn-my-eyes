@@ -5,7 +5,7 @@ import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage
 import { useState } from 'react';
 import t from '@root/src/shared/helpers/t';
 
-const UrlsConfig = () => {
+const UrlsConfigSection = () => {
    const operatingMode = useStorage(operatingModeStorage);
    const [tabIndex, setTabIndex] = useState(operatingMode === 'whitelist' ? 1 : 0);
 
@@ -46,4 +46,4 @@ const UrlsConfig = () => {
    );
 };
 
-export default UrlsConfig;
+export default UrlsConfigSection;
