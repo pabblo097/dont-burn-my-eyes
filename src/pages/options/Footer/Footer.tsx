@@ -2,6 +2,8 @@ import { VStack, Link } from '@chakra-ui/react';
 import FooterLinks from '@root/src/shared/components/FooterLinks';
 
 const Footer = () => {
+   const currentYear = new Date().getFullYear();
+
    return (
       <VStack
          w={'full'}
@@ -14,7 +16,7 @@ const Footer = () => {
             color={'gray.400'}
             isExternal
          >
-            &copy; 2024 Paweł Wiewióra
+            &copy; 2024{currentYear !== 2024 ? `-${currentYear}` : ''} Paweł Wiewióra
          </Link>
 
          <FooterLinks />
