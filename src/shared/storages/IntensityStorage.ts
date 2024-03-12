@@ -1,17 +1,17 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
 
-interface DimmerOpacityStorageActions {
+interface IntensityStorageActions {
    init: () => Promise<void>;
 }
 
-type DimmerOpacityStorage = BaseStorage<number> & DimmerOpacityStorageActions;
+type IntensityStorage = BaseStorage<number> & IntensityStorageActions;
 
-const storage = createStorage<number>('dimmerOpacity', {
+const storage = createStorage<number>('intensity', {
    storageType: StorageType.Local,
    liveUpdate: true,
 });
 
-const dimmerOpacityStorage: DimmerOpacityStorage = {
+const intensityStorage: IntensityStorage = {
    ...storage,
    init: async () => {
       if ((await storage.get()) === undefined) {
@@ -20,4 +20,4 @@ const dimmerOpacityStorage: DimmerOpacityStorage = {
    },
 };
 
-export default dimmerOpacityStorage;
+export default intensityStorage;

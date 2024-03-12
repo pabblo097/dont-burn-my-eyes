@@ -11,10 +11,10 @@ import {
 } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
+import intensityStorage from '@root/src/shared/storages/IntensityStorage';
 
-const DimmerOpacitySlider = () => {
-   const dimmerOpacity = useStorage(dimmerOpacityStorage);
+const PopupIntensitySlider = () => {
+   const intensity = useStorage(intensityStorage);
 
    return (
       <VStack
@@ -35,15 +35,15 @@ const DimmerOpacitySlider = () => {
                {t('intensity')}
             </FormLabel>
             <Tag colorScheme={'blue'}>
-               <TagLabel>{`${Math.round(dimmerOpacity)}%`}</TagLabel>
+               <TagLabel>{`${Math.round(intensity)}%`}</TagLabel>
             </Tag>
          </Flex>
          <Slider
             id={'popup-menu-intensity-slider'}
             aria-label={t('intensity')}
-            value={dimmerOpacity}
+            value={intensity}
             step={5}
-            onChange={(value) => dimmerOpacityStorage.set(value)}
+            onChange={(value) => intensityStorage.set(value)}
          >
             <SliderTrack>
                <SliderFilledTrack />
@@ -54,4 +54,4 @@ const DimmerOpacitySlider = () => {
    );
 };
 
-export default DimmerOpacitySlider;
+export default PopupIntensitySlider;

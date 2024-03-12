@@ -9,12 +9,12 @@ import {
 } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
+import intensityStorage from '@root/src/shared/storages/IntensityStorage';
 import { useState } from 'react';
 
-const IntensitySlider = () => {
+const SettingsIntensitySlider = () => {
    const [showTooltip, setShowTooltip] = useState(false);
-   const dimmerOpacity = useStorage(dimmerOpacityStorage);
+   const intensity = useStorage(intensityStorage);
 
    return (
       <FormControl
@@ -32,9 +32,9 @@ const IntensitySlider = () => {
          <Slider
             id="intensity-slider"
             aria-label={t('intensity')}
-            value={dimmerOpacity}
+            value={intensity}
             step={5}
-            onChange={(value) => dimmerOpacityStorage.set(value)}
+            onChange={(value) => intensityStorage.set(value)}
          >
             <SliderTrack>
                <SliderFilledTrack />
@@ -45,7 +45,7 @@ const IntensitySlider = () => {
                color="white"
                placement="top"
                isOpen={showTooltip}
-               label={`${dimmerOpacity}%`}
+               label={`${intensity}%`}
             >
                <SliderThumb />
             </Tooltip>
@@ -54,4 +54,4 @@ const IntensitySlider = () => {
    );
 };
 
-export default IntensitySlider;
+export default SettingsIntensitySlider;

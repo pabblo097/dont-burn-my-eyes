@@ -1,6 +1,6 @@
 interface StorageValues {
    mainSwitch: boolean;
-   dimmerOpacity: number;
+   intensity: number;
    dimmerOperatingMode: string;
    blacklist: string[];
    whitelist: string[];
@@ -13,8 +13,8 @@ type ChangesValues = {
    };
 };
 
-const getOpacityStyle = (shouldApplyDimmer: boolean, dimmerOpacity: number) =>
-   shouldApplyDimmer ? (dimmerOpacity / 100).toString() : '0';
+const getOpacityStyle = (shouldApplyDimmer: boolean, intensity: number) =>
+   shouldApplyDimmer ? (intensity / 100).toString() : '0';
 
 const getShouldApplyDimmer = (
    mainSwitch: boolean,
@@ -36,13 +36,13 @@ const getShouldApplyDimmer = (
    }
 };
 
-const createDimmerElement = (shouldApplyDimmer: boolean, dimmerOpacity: number) => {
+const createDimmerElement = (shouldApplyDimmer: boolean, intensity: number) => {
    const dimmer = document.createElement('div');
    dimmer.id = 'screen-dimmer';
    dimmer.ariaHidden = 'true';
    dimmer.setAttribute(
       'style',
-      `opacity: ${getOpacityStyle(shouldApplyDimmer, dimmerOpacity)}; display: block; z-index: 2147483647; margin: 0; border-radius: 0; padding: 0; background: rgb(70, 70, 70); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; mix-blend-mode: multiply; transition: .2s`,
+      `opacity: ${getOpacityStyle(shouldApplyDimmer, intensity)}; display: block; z-index: 2147483647; margin: 0; border-radius: 0; padding: 0; background: rgb(70, 70, 70); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; mix-blend-mode: multiply; transition: .2s`,
    );
 
    return dimmer;
@@ -52,7 +52,7 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
    (await chrome.storage.local.get()) as StorageValues;
 
 (async () => {
-   let { mainSwitch, dimmerOpacity, dimmerOperatingMode, blacklist, whitelist } =
+   let { mainSwitch, intensity, dimmerOperatingMode, blacklist, whitelist } =
       await getValuesFromStorage();
    const currentUrl = window.location.href;
 
@@ -64,7 +64,7 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
       currentUrl,
    );
 
-   const dimmer = createDimmerElement(shouldApplyDimmer, dimmerOpacity);
+   const dimmer = createDimmerElement(shouldApplyDimmer, intensity);
 
    document.documentElement.appendChild(dimmer);
 
@@ -73,8 +73,8 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
          mainSwitch = changes.mainSwitch.newValue;
       }
 
-      if (Object.hasOwn(changes, 'dimmerOpacity')) {
-         dimmerOpacity = changes.dimmerOpacity.newValue;
+      if (Object.hasOwn(changes, 'intensity')) {
+         intensity = changes.intensity.newValue;
       }
 
       if (Object.hasOwn(changes, 'dimmerOperatingMode')) {
@@ -96,6 +96,6 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
          whitelist,
          currentUrl,
       );
-      dimmer.style.opacity = getOpacityStyle(shouldApplyDimmer, dimmerOpacity);
+      dimmer.style.opacity = getOpacityStyle(shouldApplyDimmer, intensity);
    });
 })();

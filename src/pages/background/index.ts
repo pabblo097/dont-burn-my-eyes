@@ -1,4 +1,4 @@
-import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
+import intensityStorage from '@root/src/shared/storages/IntensityStorage';
 import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
 import { blacklistStorage, whitelistStorage } from '@root/src/shared/storages/UrlsStorage';
@@ -10,7 +10,7 @@ reloadOnUpdate('pages/background');
 chrome.runtime.onInstalled.addListener(async (details) => {
    if (details.reason === 'install') {
       await mainSwitchStorage.init();
-      await dimmerOpacityStorage.init();
+      await intensityStorage.init();
       await dimmerOperatingModeStorage.init();
       await blacklistStorage.init();
       await whitelistStorage.init();

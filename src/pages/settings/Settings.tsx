@@ -7,13 +7,13 @@ import Footer from './Footer';
 import Logo from '@root/src/shared/components/Logo';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
-import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
-import IntensitySlider from './IntensitySlider';
+import intensityStorage from '@root/src/shared/storages/IntensityStorage';
+import SettingsIntensitySlider from './SettingsIntensitySlider';
 import SettingsDialogs from './SettingsDialogs';
 
 const Settings = () => {
    const mainSwitch = useStorage(mainSwitchStorage);
-   const dimmerOpacity = useStorage(dimmerOpacityStorage);
+   const intensity = useStorage(intensityStorage);
 
    return (
       <>
@@ -26,7 +26,7 @@ const Settings = () => {
             borderRadius={'lg'}
          >
             <VStack>
-               <Logo areRedPathsVisible={!mainSwitch || dimmerOpacity === 0} />
+               <Logo areRedPathsVisible={!mainSwitch || intensity === 0} />
 
                <DividerWithHeading />
 
@@ -37,7 +37,7 @@ const Settings = () => {
                >
                   <HStack w={'full'}>
                      <SettingsMainSwitch />
-                     <IntensitySlider />
+                     <SettingsIntensitySlider />
                   </HStack>
 
                   <DimmerOperatingModeSelect />
