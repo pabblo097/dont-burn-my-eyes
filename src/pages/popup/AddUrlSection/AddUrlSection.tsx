@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { UrlLevelOperation } from './constants';
 import interleave from '@root/src/shared/helpers/interleave';
 
-const AddUrlButton = () => {
+const AddUrlSection = () => {
    const [urlLevel, setUrlLevel] = useState(0);
    const operatingMode = useStorage(operatingModeStorage);
    const urlsStorage = getUrlStorage(operatingMode);
@@ -138,4 +138,4 @@ const AddUrlButton = () => {
    );
 };
 
-export default AddUrlButton;
+export default AddUrlSection;

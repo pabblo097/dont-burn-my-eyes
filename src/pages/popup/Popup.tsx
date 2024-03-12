@@ -3,7 +3,7 @@ import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 import { VStack, StackDivider, Center } from '@chakra-ui/react';
 import PopupMainSwitch from '@root/src/pages/popup/PopupMainSwitch';
 import PopupIntensitySlider from './PopupIntensitySlider';
-import AddUrlButton from './AddUrlButton';
+import AddUrlSection from './AddUrlSection';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
 import PopupFooter from './PopupFooter';
@@ -24,7 +24,7 @@ const Popup = () => {
 
          <PopupMainSwitch />
 
-         {operatingMode !== 'alwaysOn' && <AddUrlButton />}
+         {operatingMode !== 'alwaysOn' && <AddUrlSection />}
 
          <PopupIntensitySlider />
 
