@@ -7,7 +7,7 @@ import {
    SliderTrack,
    SliderFilledTrack,
    SliderThumb,
-   Text,
+   FormLabel,
 } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useStorage from '@root/src/shared/hooks/useStorage';
@@ -28,20 +28,21 @@ const DimmerOpacitySlider = () => {
             w={'full'}
             justify={'space-between'}
          >
-            <Text
-               fontSize={'md'}
-               fontWeight={'medium'}
-               color={'white'}
+            <FormLabel
+               htmlFor="popup-menu-intensity-slider"
+               mb="0"
             >
                {t('intensity')}
-            </Text>
+            </FormLabel>
             <Tag colorScheme={'blue'}>
                <TagLabel>{`${Math.round(dimmerOpacity)}%`}</TagLabel>
             </Tag>
          </Flex>
          <Slider
+            id={'popup-menu-intensity-slider'}
             aria-label={t('intensity')}
             value={dimmerOpacity}
+            step={5}
             onChange={(value) => dimmerOpacityStorage.set(value)}
          >
             <SliderTrack>

@@ -4,11 +4,11 @@ import DimmerSwitch from './DimmerSwitch';
 import DimmerOperatingModeSelect from './DimmerOperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
 import Footer from './Footer';
-import DimmerOpacitySlider from '../popup/DimmerOpacitySlider';
 import Logo from '@root/src/shared/components/Logo';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
 import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
+import IntensitySlider from './IntensitySlider';
 
 const Options = () => {
    const isDimmerEnabled = useStorage(dimmerStateStorage);
@@ -35,7 +35,7 @@ const Options = () => {
             >
                <HStack w={'full'}>
                   <DimmerSwitch />
-                  <DimmerOpacitySlider />
+                  <IntensitySlider />
                </HStack>
 
                <DimmerOperatingModeSelect />
