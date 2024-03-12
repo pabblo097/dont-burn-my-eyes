@@ -1,3 +1,5 @@
+import t from './t';
+
 const supportedLang = ['en', 'pl'];
 
 const setHtmlLang = async () => {
@@ -7,6 +9,7 @@ const setHtmlLang = async () => {
    document.documentElement.lang = supportedLang.includes(uiLanguageWithoutCountry)
       ? uiLanguageWithoutCountry
       : 'en';
+   document.title = t('settings');
 };
 
 export default setHtmlLang;
