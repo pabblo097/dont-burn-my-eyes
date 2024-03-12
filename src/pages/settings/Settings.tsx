@@ -3,7 +3,7 @@ import DividerWithHeading from './DividerWithHeading';
 import SettingsMainSwitch from './SettingsMainSwitch';
 import OperatingModeSelect from './OperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
-import Footer from './Footer';
+import SettingsFooter from './SettingsFooter';
 import Logo from '@root/src/shared/components/Logo';
 import SettingsIntensitySlider from './SettingsIntensitySlider';
 import SettingsDialogs from './SettingsDialogs';
@@ -37,7 +37,7 @@ const Settings = () => (
 
                <UrlsConfig />
 
-               <Footer />
+               <SettingsFooter />
             </VStack>
          </VStack>
       </Container>

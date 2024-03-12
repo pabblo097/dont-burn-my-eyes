@@ -3,7 +3,7 @@ import { Flex, IconButton, Tooltip } from '@chakra-ui/react';
 import FooterLinks from '@root/src/shared/components/FooterLinks';
 import t from '@root/src/shared/helpers/t';
 
-const Footer = () => {
+const PopupFooter = () => {
    return (
       <Flex
          justify={'space-between'}
@@ -27,4 +27,4 @@ const Footer = () => {
    );
 };
 
-export default Footer;
+export default PopupFooter;

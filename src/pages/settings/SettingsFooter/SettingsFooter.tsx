@@ -1,7 +1,7 @@
 import { VStack, Link } from '@chakra-ui/react';
 import FooterLinks from '@root/src/shared/components/FooterLinks';
 
-const Footer = () => {
+const SettingsFooter = () => {
    const currentYear = new Date().getFullYear();
 
    return (
@@ -24,4 +24,4 @@ const Footer = () => {
    );
 };
 
-export default Footer;
+export default SettingsFooter;

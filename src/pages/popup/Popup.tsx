@@ -6,7 +6,7 @@ import PopupIntensitySlider from './PopupIntensitySlider';
 import AddUrlButton from './AddUrlButton';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
-import Footer from './Footer';
+import PopupFooter from './PopupFooter';
 import Logo from '@root/src/shared/components/Logo';
 
 const Popup = () => {
@@ -28,7 +28,7 @@ const Popup = () => {
 
          <PopupIntensitySlider />
 
-         <Footer />
+         <PopupFooter />
       </VStack>
    );
 };
