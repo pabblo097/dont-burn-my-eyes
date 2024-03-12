@@ -30,7 +30,6 @@ import {
    ChevronUpIcon,
    CloseIcon,
    DeleteIcon,
-   ExternalLinkIcon,
    SearchIcon,
 } from '@chakra-ui/icons';
 import { useState, useRef, ChangeEvent } from 'react';
@@ -192,10 +191,6 @@ const UrlsConfigTable = ({ tableMode }: UrlsConfigTableProps) => {
                            >
                               {url}
                            </Highlight>
-                           <ExternalLinkIcon
-                              mx={2}
-                              mb={'2px'}
-                           />
                         </Link>
                         <IconButton
                            colorScheme={'red'}
