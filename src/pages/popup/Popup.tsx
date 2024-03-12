@@ -1,7 +1,7 @@
 import withSuspense from '@src/shared/hoc/withSuspense';
 import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 import { VStack, StackDivider, Center } from '@chakra-ui/react';
-import ToggleButton from '@root/src/pages/popup/ToggleButton';
+import PopupMainSwitch from '@root/src/pages/popup/PopupMainSwitch';
 import DimmerOpacitySlider from './DimmerOpacitySlider';
 import AddUrlButton from './AddUrlButton';
 import useStorage from '@root/src/shared/hooks/useStorage';
@@ -9,11 +9,11 @@ import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatin
 import Footer from './Footer';
 import Logo from '@root/src/shared/components/Logo';
 import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
-import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
+import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
 
 const Popup = () => {
    const operatingMode = useStorage(dimmerOperatingModeStorage);
-   const isDimmerEnabled = useStorage(dimmerStateStorage);
+   const mainSwitch = useStorage(mainSwitchStorage);
    const dimmerOpacity = useStorage(dimmerOpacityStorage);
 
    return (
@@ -24,9 +24,9 @@ const Popup = () => {
          p={'4'}
          divider={<StackDivider />}
       >
-         <Logo areRedPathsVisible={!isDimmerEnabled || dimmerOpacity === 0} />
+         <Logo areRedPathsVisible={!mainSwitch || dimmerOpacity === 0} />
 
-         <ToggleButton />
+         <PopupMainSwitch />
 
          {operatingMode !== 'alwaysOn' && <AddUrlButton />}
 

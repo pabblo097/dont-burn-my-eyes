@@ -1,16 +1,16 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
 
-type DimmerStateStorage = BaseStorage<boolean> & {
+type MainSwitchStorage = BaseStorage<boolean> & {
    toggle: () => Promise<void>;
    init: () => Promise<void>;
 };
 
-const storage = createStorage<boolean>('isDimmerEnabled', {
+const storage = createStorage<boolean>('mainSwitch', {
    storageType: StorageType.Local,
    liveUpdate: true,
 });
 
-const dimmerStateStorage: DimmerStateStorage = {
+const mainSwitchStorage: MainSwitchStorage = {
    ...storage,
    toggle: async () => {
       await storage.set((currentState) => {
@@ -24,4 +24,4 @@ const dimmerStateStorage: DimmerStateStorage = {
    },
 };
 
-export default dimmerStateStorage;
+export default mainSwitchStorage;

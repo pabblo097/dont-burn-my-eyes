@@ -39,7 +39,7 @@ export default defineConfig({
          },
          output: {
             entryFileNames: 'src/pages/[name]/index.js',
-            chunkFileNames: 'assets/js/chunk.[hash].js',
+            chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/chunk.[hash].js',
             assetFileNames: `assets/[ext]/[name].[ext]`,
          },
          onwarn(warning, warn) {

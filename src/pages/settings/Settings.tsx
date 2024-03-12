@@ -1,18 +1,18 @@
 import { Container, HStack, StackDivider, VStack } from '@chakra-ui/react';
 import DividerWithHeading from './DividerWithHeading';
-import DimmerSwitch from './DimmerSwitch';
+import SettingsMainSwitch from './SettingsMainSwitch';
 import DimmerOperatingModeSelect from './DimmerOperatingModeSelect';
 import UrlsConfig from './UrlsConfig';
 import Footer from './Footer';
 import Logo from '@root/src/shared/components/Logo';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
+import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
 import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage';
 import IntensitySlider from './IntensitySlider';
 import SettingsDialogs from './SettingsDialogs';
 
 const Settings = () => {
-   const isDimmerEnabled = useStorage(dimmerStateStorage);
+   const mainSwitch = useStorage(mainSwitchStorage);
    const dimmerOpacity = useStorage(dimmerOpacityStorage);
 
    return (
@@ -26,7 +26,7 @@ const Settings = () => {
             borderRadius={'lg'}
          >
             <VStack>
-               <Logo areRedPathsVisible={!isDimmerEnabled || dimmerOpacity === 0} />
+               <Logo areRedPathsVisible={!mainSwitch || dimmerOpacity === 0} />
 
                <DividerWithHeading />
 
@@ -36,7 +36,7 @@ const Settings = () => {
                   spacing={4}
                >
                   <HStack w={'full'}>
-                     <DimmerSwitch />
+                     <SettingsMainSwitch />
                      <IntensitySlider />
                   </HStack>
 

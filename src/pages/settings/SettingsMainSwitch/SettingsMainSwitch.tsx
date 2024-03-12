@@ -1,10 +1,10 @@
 import { FormControl, FormLabel, Switch } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import dimmerStateStorage from '@root/src/shared/storages/DimmerStateStorage';
+import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
 
-const DimmerSwitch = () => {
-   const isDimmerEnabled = useStorage(dimmerStateStorage);
+const SettingsMainSwitch = () => {
+   const mainSwitchValue = useStorage(mainSwitchStorage);
 
    return (
       <FormControl
@@ -19,11 +19,11 @@ const DimmerSwitch = () => {
          </FormLabel>
          <Switch
             id="dimmer-switch"
-            isChecked={isDimmerEnabled}
-            onChange={dimmerStateStorage.toggle}
+            isChecked={mainSwitchValue}
+            onChange={mainSwitchStorage.toggle}
          />
       </FormControl>
    );
 };
 
-export default DimmerSwitch;
+export default SettingsMainSwitch;
