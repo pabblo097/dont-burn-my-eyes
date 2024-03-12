@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
-import { LogoProps, animateIn, animateOut, transition } from './constants';
+import { animateIn, animateOut, transition } from './constants';
+import useStorage from '../../hooks/useStorage';
+import intensityStorage from '../../storages/IntensityStorage';
+import mainSwitchStorage from '../../storages/MainSwitchStorage';
 
-const Logo = ({ areRedPathsVisible = false }: LogoProps) => {
-   const initial = { pathLength: areRedPathsVisible ? 1 : 0 };
+const Logo = () => {
+   const mainSwitch = useStorage(mainSwitchStorage);
+   const intensity = useStorage(intensityStorage);
+   const shouldRedPathsBeVisible = !mainSwitch || intensity === 0;
+   const initialRedPaths = { pathLength: shouldRedPathsBeVisible ? 1 : 0 };
+
    return (
       <motion.svg
          viewBox="0 0 400 100"
@@ -66,88 +73,88 @@ const Logo = ({ areRedPathsVisible = false }: LogoProps) => {
                d="M288 27.5L289 29L292.5 30"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M287.5 26.5L289 29V31"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M289.5 70.5L291 68.5L296 68"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M283.5 30V33.5L285.5 34.5V36"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M283.5 29.5V36L282 39L280 39.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M283.5 66L285 63.5L287.5 64"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M283.5 66.5L285 63.5L284.5 59L285.5 57.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M274 39.5L275.5 42.5L279 44"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M275 58.5L278.5 55.5L281 56.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M274 39.5L275.5 42.5V45.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M275.5 58L278.5 55.5L279.5 51"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <path
@@ -158,72 +165,72 @@ const Logo = ({ areRedPathsVisible = false }: LogoProps) => {
                d="M339.5 26L338.5 29L340 32"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M339.5 26L338.5 29L333.5 30"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M346 31L347 37L344.5 41"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M346 30.5L347 37L349.5 39.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M341.5 69L341 63L336 59"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M352 60L348 56L345 59"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M352.5 60.5L348 56V52.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M360 48L353.5 46.5L350.5 49.5"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <motion.path
                d="M360.5 48L353 46.5L350.5 43.5H348"
                stroke="#fa3e3e"
                strokeLinejoin="bevel"
-               initial={initial}
-               animate={areRedPathsVisible ? animateIn : animateOut}
+               initial={initialRedPaths}
+               animate={shouldRedPathsBeVisible ? animateIn : animateOut}
                transition={transition}
             />
             <path

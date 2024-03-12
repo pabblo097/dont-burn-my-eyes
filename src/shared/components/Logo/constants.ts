@@ -1,7 +1,3 @@
-export interface LogoProps {
-   areRedPathsVisible?: boolean;
-}
-
 export const transition = {
    duration: 1,
    ease: 'easeInOut',

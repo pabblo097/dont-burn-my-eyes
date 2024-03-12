@@ -8,13 +8,9 @@ import useStorage from '@root/src/shared/hooks/useStorage';
 import dimmerOperatingModeStorage from '@root/src/shared/storages/DimmerOperatingModeStorage';
 import Footer from './Footer';
 import Logo from '@root/src/shared/components/Logo';
-import intensityStorage from '@root/src/shared/storages/IntensityStorage';
-import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
 
 const Popup = () => {
    const operatingMode = useStorage(dimmerOperatingModeStorage);
-   const mainSwitch = useStorage(mainSwitchStorage);
-   const intensity = useStorage(intensityStorage);
 
    return (
       <VStack
@@ -24,7 +20,7 @@ const Popup = () => {
          p={'4'}
          divider={<StackDivider />}
       >
-         <Logo areRedPathsVisible={!mainSwitch || intensity === 0} />
+         <Logo />
 
          <PopupMainSwitch />
 
