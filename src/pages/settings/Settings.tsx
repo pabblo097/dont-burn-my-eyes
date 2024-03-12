@@ -6,7 +6,7 @@ import UrlsConfig from './UrlsConfig';
 import SettingsFooter from './SettingsFooter';
 import Logo from '@root/src/shared/components/Logo';
 import SettingsIntensitySlider from './SettingsIntensitySlider';
-import SettingsDialogs from './SettingsDialogs';
+import Dialogs from './Dialogs';
 
 const Settings = () => (
    <>
@@ -42,7 +42,7 @@ const Settings = () => (
          </VStack>
       </Container>
 
-      <SettingsDialogs />
+      <Dialogs />
    </>
 );
 

@@ -2,7 +2,7 @@ import t from '@root/src/shared/helpers/t';
 import ConfirmationDialog from '../ConfirmationDialog';
 import { wrongDataDialogId, importSuccessDialogId } from './constants';
 
-const SettingsDialogs = () => {
+const Dialogs = () => {
    return (
       <>
          <ConfirmationDialog
@@ -20,4 +20,4 @@ const SettingsDialogs = () => {
    );
 };
 
-export default SettingsDialogs;
+export default Dialogs;

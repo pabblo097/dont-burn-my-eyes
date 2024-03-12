@@ -5,7 +5,7 @@ import { useRef, ChangeEvent } from 'react';
 import { importUrls } from '@root/src/shared/helpers/urlsSync';
 import { UrlsConfigTabFallbackProps } from './constants';
 import useDialog from '@root/src/shared/hooks/useDialog';
-import { importSuccessDialogId, wrongDataDialogId } from '../../SettingsDialogs';
+import { importSuccessDialogId, wrongDataDialogId } from '../../Dialogs';
 
 const UrlsConfigTabFallback = ({ tabMode }: UrlsConfigTabFallbackProps) => {
    const fileInputRef = useRef<HTMLInputElement>(null);

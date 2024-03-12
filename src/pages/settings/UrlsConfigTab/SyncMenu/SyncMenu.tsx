@@ -5,7 +5,7 @@ import { useRef, ChangeEvent } from 'react';
 import { SyncMenuProps } from './constants';
 import { exportUrls, importUrls } from '@root/src/shared/helpers/urlsSync';
 import useDialog from '@root/src/shared/hooks/useDialog';
-import { importSuccessDialogId, wrongDataDialogId } from '../../SettingsDialogs';
+import { importSuccessDialogId, wrongDataDialogId } from '../../Dialogs';
 
 const SyncMenu = ({ tabMode, urls }: SyncMenuProps) => {
    const fileInputRef = useRef<HTMLInputElement>(null);
