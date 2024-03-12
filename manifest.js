@@ -12,7 +12,7 @@ const manifest = {
    version: packageJson.version,
    description: '__MSG_extensionDescription__',
    permissions: ['storage', 'tabs'],
-   options_page: 'src/pages/options/index.html',
+   options_page: 'src/pages/settings/index.html',
    background: {
       service_worker: 'src/pages/background/index.js',
       type: 'module',

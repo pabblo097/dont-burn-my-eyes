@@ -11,7 +11,7 @@ import dimmerOpacityStorage from '@root/src/shared/storages/DimmerOpacityStorage
 import IntensitySlider from './IntensitySlider';
 import SettingsDialogs from './SettingsDialogs';
 
-const Options = () => {
+const Settings = () => {
    const isDimmerEnabled = useStorage(dimmerStateStorage);
    const dimmerOpacity = useStorage(dimmerOpacityStorage);
 
@@ -54,4 +54,4 @@ const Options = () => {
    );
 };
 
-export default Options;
+export default Settings;

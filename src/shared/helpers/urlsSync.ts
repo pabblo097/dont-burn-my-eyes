@@ -1,4 +1,4 @@
-import { TabMode } from '@root/src/pages/options/UrlsConfigTab/constants';
+import { TabMode } from '@root/src/pages/settings/UrlsConfigTab/constants';
 import { ChangeEvent } from 'react';
 import getUrlStorage from './getUrlsStorage';
 

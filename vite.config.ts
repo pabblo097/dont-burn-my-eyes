@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path, { resolve } from 'path';
-import { getCacheInvalidationKey, getPlugins } from './utils/vite';
+import { resolve } from 'path';
+import { getPlugins } from './utils/vite';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -34,18 +34,13 @@ export default defineConfig({
          input: {
             content: resolve(pagesDir, 'content', 'index.ts'),
             popup: resolve(pagesDir, 'popup', 'index.html'),
-            options: resolve(pagesDir, 'options', 'index.html'),
+            settings: resolve(pagesDir, 'settings', 'index.html'),
             background: resolve(pagesDir, 'background', 'index.ts'),
          },
          output: {
             entryFileNames: 'src/pages/[name]/index.js',
-            chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
-            assetFileNames: (assetInfo) => {
-               const { name } = path.parse(assetInfo.name);
-               const assetFileName =
-                  name === 'contentStyle' ? `${name}${getCacheInvalidationKey()}` : name;
-               return `assets/[ext]/${assetFileName}.chunk.[ext]`;
-            },
+            chunkFileNames: 'assets/js/chunk.[hash].js',
+            assetFileNames: `assets/[ext]/[name].[ext]`,
          },
          onwarn(warning, warn) {
             if (
