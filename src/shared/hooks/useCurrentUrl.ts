@@ -8,7 +8,7 @@ const useCurrentUrl = () => {
       const getCurrentUrl = async () => {
          const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
-         const splitUrl = tab.url.split('?')[0].split('/');
+         const splitUrl = tab.url.split(/[?#]/)[0].split('/');
          const filteredSplitUrl = splitUrl.filter((url) => !url.includes('http') && url !== '');
 
          setIsWebsite(splitUrl[0].includes('http'));
