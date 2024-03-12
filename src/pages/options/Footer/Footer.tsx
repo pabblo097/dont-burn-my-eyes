@@ -1,4 +1,4 @@
-import { VStack, Text } from '@chakra-ui/react';
+import { VStack, Link } from '@chakra-ui/react';
 import FooterLinks from '@root/src/shared/components/FooterLinks';
 
 const Footer = () => {
@@ -9,7 +9,13 @@ const Footer = () => {
          align={'center'}
          spacing={2}
       >
-         <Text color={'gray.500'}>Paweł Wiewióra &copy; 2024</Text>
+         <Link
+            href={'https://github.com/pabblo097/dont-burn-my-eyes/blob/main/LICENSE'}
+            color={'gray.400'}
+            isExternal
+         >
+            &copy; 2024 Paweł Wiewióra
+         </Link>
 
          <FooterLinks />
       </VStack>
