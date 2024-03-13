@@ -1,38 +1,105 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier"],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "rules": {
-    "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off"
-  },
-  "globals": {
-    "chrome": "readonly"
-  },
-  "ignorePatterns": ["watch.js", "dist/**"]
+   "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+   },
+   "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:import/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:react/jsx-runtime",
+      "prettier"
+   ],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+      "ecmaFeatures": {
+         "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+   },
+   "plugins": [
+      "react",
+      "@typescript-eslint",
+      "react-hooks",
+      "import",
+      "jsx-a11y",
+      "prettier",
+      "simple-import-sort",
+      "import-newlines",
+      "unused-imports"
+   ],
+   "settings": {
+      "react": {
+         "version": "detect"
+      }
+   },
+   "rules": {
+      "react/react-in-jsx-scope": "off",
+      "import/no-unresolved": "off",
+      "simple-import-sort/imports": "warn",
+      "simple-import-sort/exports": "warn",
+      "react/jsx-curly-brace-presence": [
+         "warn",
+         {
+            "props": "always",
+            "children": "always",
+            "propElementValues": "always"
+         }
+      ],
+      "react/hook-use-state": "warn",
+      "react/jsx-boolean-value": "warn",
+      "react/jsx-fragments": "warn",
+      "react/jsx-newline": "warn",
+      "react/jsx-no-constructed-context-values": "error",
+      "react/jsx-no-useless-fragment": "warn",
+      "react/jsx-sort-props": [
+         "warn",
+         {
+            "callbacksLast": true,
+            "shorthandFirst": true,
+            "multiline": "last",
+            "reservedFirst": [
+               "key",
+               "ref"
+            ]
+         }
+      ],
+      "arrow-body-style": "warn",
+      "import-newlines/enforce": [
+         "warn",
+         {
+            "items": 3
+         }
+      ],
+      "indent": [
+         "warn",
+         3,
+         {
+            "SwitchCase": 1
+         }
+      ],
+      "@typescript-eslint/no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+         "error",
+         {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+         }
+      ]
+   },
+   "globals": {
+      "chrome": "readonly"
+   },
+   "ignorePatterns": [
+      "watch.js",
+      "dist/**"
+   ]
 }
