@@ -5,21 +5,18 @@ import {
    VStack,
    StackDivider,
    Flex,
-   Input,
-   InputGroup,
-   InputLeftElement,
    Highlight,
-   InputRightElement,
    HStack,
 } from '@chakra-ui/react';
 import { UrlsConfigTabProps } from './constants';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
-import { CloseIcon, DeleteIcon, SearchIcon } from '@chakra-ui/icons';
+import { DeleteIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import t from '@root/src/shared/helpers/t';
 import UrlsConfigTabFallback from './UrlsConfigTabFallback';
 import SyncMenu from './SyncMenu';
+import SearchInput from './SearchInput';
 
 const UrlsConfigTab = ({ tabMode }: UrlsConfigTabProps) => {
    const [searchValue, setSearchValue] = useState('');
@@ -35,25 +32,11 @@ const UrlsConfigTab = ({ tabMode }: UrlsConfigTabProps) => {
    return (
       <VStack w={'full'}>
          <HStack w={'full'}>
-            <InputGroup>
-               <InputLeftElement pointerEvents="none">
-                  <SearchIcon color="gray.300" />
-               </InputLeftElement>
-               <Input
-                  value={searchValue}
-                  onChange={(event) => setSearchValue(event.target.value)}
-                  placeholder={t('searchUrl')}
-               />
-               <InputRightElement>
-                  <IconButton
-                     aria-label={t('cleanSearchUrlInputAriaLabel')}
-                     icon={<CloseIcon />}
-                     variant={'ghost'}
-                     size={'xs'}
-                     onClick={() => setSearchValue('')}
-                  />
-               </InputRightElement>
-            </InputGroup>
+            <SearchInput
+               value={searchValue}
+               onChange={(event) => setSearchValue(event.target.value)}
+               onButtonClick={() => setSearchValue('')}
+            />
 
             <SyncMenu
                tabMode={tabMode}
