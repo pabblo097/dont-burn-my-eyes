@@ -5,10 +5,11 @@ import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
 import t from '@root/src/shared/helpers/t';
 import { getButtonLabel } from './helpers';
-import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { UrlLevelOperation } from './constants';
 import interleave from '@root/src/shared/helpers/interleave';
+import SubUrlsSection from './SubUrlsSection';
 
 const AddUrlSection = () => {
    const [urlLevel, setUrlLevel] = useState(0);
@@ -18,7 +19,6 @@ const AddUrlSection = () => {
    const { splitUrl, isWebsite } = useCurrentUrl();
 
    const selectedUrl = interleave(splitUrl.slice(0, urlLevel + 1), '/').join('');
-   const addedSubUrls = urls.filter((url) => url.includes(splitUrl[0]) && url !== splitUrl[0]);
    const isUrlInList = urls.includes(selectedUrl);
 
    const handleUrlAddRemove = async () => {
@@ -92,48 +92,8 @@ const AddUrlSection = () => {
          >
             {isWebsite ? selectedUrl : t('websiteNotSupported')}
          </Text>
-         {addedSubUrls.length && (
-            <VStack
-               w={'full'}
-               bg={'gray.700'}
-               borderRadius={'md'}
-               py={2}
-               px={3}
-               maxH={165}
-               overflowY={'auto'}
-            >
-               <Text fontWeight={'medium'}>{t('addedSubUrls')}</Text>
-               {addedSubUrls.map((subUrl) => (
-                  <HStack
-                     w={'full'}
-                     key={subUrl}
-                  >
-                     <Tooltip
-                        label={subUrl}
-                        openDelay={800}
-                        placement="top"
-                     >
-                        <Text
-                           flexGrow={1}
-                           overflow={'hidden'}
-                           whiteSpace={'nowrap'}
-                           textOverflow={'ellipsis'}
-                        >
-                           {subUrl}
-                        </Text>
-                     </Tooltip>
-                     <IconButton
-                        aria-label={t('removeSubUrlsButtonAriaLabel')}
-                        icon={<DeleteIcon />}
-                        size={'xs'}
-                        variant={'ghost'}
-                        colorScheme="red"
-                        onClick={() => urlsStorage.remove(subUrl)}
-                     />
-                  </HStack>
-               ))}
-            </VStack>
-         )}
+
+         <SubUrlsSection />
       </VStack>
    );
 };
