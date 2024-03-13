@@ -10,14 +10,10 @@ interface UrlsStorageActions {
 
 const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActions => ({
    add: async (value: string) => {
-      await storage.set((currentState) => {
-         return [...currentState, value];
-      });
+      await storage.set((currentState) => [...currentState, value]);
    },
    remove: async (value: string) => {
-      await storage.set((currentState) => {
-         return currentState.filter((url) => url !== value);
-      });
+      await storage.set((currentState) => currentState.filter((url) => url !== value));
    },
    init: async () => {
       if ((await storage.get()) === undefined) {
@@ -25,9 +21,7 @@ const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActio
       }
    },
    merge: async (values: string[]) => {
-      await storage.set((currentState) => {
-         return lodash.union(currentState, values);
-      });
+      await storage.set((currentState) => lodash.union(currentState, values));
    },
 });
 

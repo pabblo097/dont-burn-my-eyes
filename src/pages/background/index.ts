@@ -1,9 +1,10 @@
+import 'webextension-polyfill';
+
 import intensityStorage from '@root/src/shared/storages/IntensityStorage';
-import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
 import mainSwitchStorage from '@root/src/shared/storages/MainSwitchStorage';
+import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
 import { blacklistStorage, whitelistStorage } from '@root/src/shared/storages/UrlsStorage';
 import reloadOnUpdate from 'virtual:reload-on-update-in-background-script';
-import 'webextension-polyfill';
 
 reloadOnUpdate('pages/background');
 

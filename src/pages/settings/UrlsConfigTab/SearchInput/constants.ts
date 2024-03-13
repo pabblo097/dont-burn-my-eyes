@@ -1,4 +1,4 @@
-import { MouseEvent , ChangeEvent } from 'react';
+import { ChangeEvent, MouseEvent } from 'react';
 
 export interface SearchInputProps {
    value: string;

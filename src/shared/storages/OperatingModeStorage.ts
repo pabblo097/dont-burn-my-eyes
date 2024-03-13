@@ -4,9 +4,8 @@ const operatingModes = ['blacklist', 'whitelist', 'alwaysOn'] as const;
 
 export type OperatingMode = (typeof operatingModes)[number];
 
-export const isOperatingMode = (value: unknown): value is OperatingMode => {
-   return typeof value === 'string' && operatingModes.includes(value as OperatingMode);
-};
+export const isOperatingMode = (value: unknown): value is OperatingMode =>
+   typeof value === 'string' && operatingModes.includes(value as OperatingMode);
 
 interface OperatingModeStorageActions {
    init: () => Promise<void>;

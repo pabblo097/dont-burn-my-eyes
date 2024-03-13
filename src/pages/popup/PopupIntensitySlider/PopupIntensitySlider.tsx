@@ -1,13 +1,13 @@
 import {
-   VStack,
    Flex,
-   Tag,
-   TagLabel,
+   FormLabel,
    Slider,
-   SliderTrack,
    SliderFilledTrack,
    SliderThumb,
-   FormLabel,
+   SliderTrack,
+   Tag,
+   TagLabel,
+   VStack,
 } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useStorage from '@root/src/shared/hooks/useStorage';
@@ -18,36 +18,39 @@ const PopupIntensitySlider = () => {
 
    return (
       <VStack
-         w={'full'}
          bg={'gray.700'}
          borderRadius={'md'}
-         py={2}
          px={3}
+         py={2}
+         w={'full'}
       >
          <Flex
-            w={'full'}
             justify={'space-between'}
+            w={'full'}
          >
             <FormLabel
-               htmlFor="popup-menu-intensity-slider"
-               mb="0"
+               htmlFor={'popup-menu-intensity-slider'}
+               mb={'0'}
             >
                {t('intensity')}
             </FormLabel>
+
             <Tag colorScheme={'blue'}>
                <TagLabel>{`${Math.round(intensity)}%`}</TagLabel>
             </Tag>
          </Flex>
+
          <Slider
-            id={'popup-menu-intensity-slider'}
             aria-label={t('intensity')}
-            value={intensity}
+            id={'popup-menu-intensity-slider'}
             step={5}
+            value={intensity}
             onChange={(value) => intensityStorage.set(value)}
          >
             <SliderTrack>
                <SliderFilledTrack />
             </SliderTrack>
+
             <SliderThumb />
          </Slider>
       </VStack>

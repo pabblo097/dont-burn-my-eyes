@@ -8,26 +8,27 @@ const PopupMainSwitch = () => {
 
    return (
       <HStack
-         spacing={'0'}
-         w={'full'}
          border={'2px'}
          borderColor={mainSwitchValue ? 'teal.200' : 'red.200'}
          borderRadius={'lg'}
+         spacing={'0'}
+         w={'full'}
       >
          <Button
-            w={'full'}
+            borderRightRadius={0}
             colorScheme={mainSwitchValue ? 'gray' : 'red'}
             variant={mainSwitchValue ? 'ghost' : 'solid'}
-            borderRightRadius={0}
+            w={'full'}
             onClick={() => mainSwitchStorage.set(false)}
          >
             {t('off')}
          </Button>
+
          <Button
-            w={'full'}
+            borderLeftRadius={0}
             colorScheme={mainSwitchValue ? 'teal' : 'gray'}
             variant={mainSwitchValue ? 'solid' : 'ghost'}
-            borderLeftRadius={0}
+            w={'full'}
             onClick={() => mainSwitchStorage.set(true)}
          >
             {t('on')}

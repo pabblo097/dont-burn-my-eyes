@@ -1,11 +1,12 @@
-import { VStack, HStack } from '@chakra-ui/react';
-import { UrlsConfigTabProps } from './constants';
-import useStorage from '@root/src/shared/hooks/useStorage';
+import { HStack, VStack } from '@chakra-ui/react';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
+import useStorage from '@root/src/shared/hooks/useStorage';
 import { useState } from 'react';
-import UrlsConfigTabFallback from './UrlsConfigTabFallback';
-import SyncMenu from './SyncMenu';
+
+import { UrlsConfigTabProps } from './constants';
 import SearchInput from './SearchInput';
+import SyncMenu from './SyncMenu';
+import UrlsConfigTabFallback from './UrlsConfigTabFallback';
 import UrlsList from './UrlsList';
 
 const UrlsConfigTab = ({ tabMode }: UrlsConfigTabProps) => {
@@ -24,8 +25,8 @@ const UrlsConfigTab = ({ tabMode }: UrlsConfigTabProps) => {
          <HStack w={'full'}>
             <SearchInput
                value={searchValue}
-               onChange={(event) => setSearchValue(event.target.value)}
                onButtonClick={() => setSearchValue('')}
+               onChange={(event) => setSearchValue(event.target.value)}
             />
 
             <SyncMenu
@@ -35,9 +36,9 @@ const UrlsConfigTab = ({ tabMode }: UrlsConfigTabProps) => {
          </HStack>
 
          <UrlsList
-            urls={filteredUrls}
             searchValue={searchValue}
             tabMode={tabMode}
+            urls={filteredUrls}
          />
       </VStack>
    );

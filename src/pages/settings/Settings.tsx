@@ -1,22 +1,28 @@
-import { Container, HStack, StackDivider, VStack } from '@chakra-ui/react';
-import DividerWithHeading from './DividerWithHeading';
-import SettingsMainSwitch from './SettingsMainSwitch';
-import OperatingModeSelect from './OperatingModeSelect';
-import UrlsConfigSection from './UrlsConfigSection';
-import SettingsFooter from './SettingsFooter';
+import {
+   Container,
+   HStack,
+   StackDivider,
+   VStack
+} from '@chakra-ui/react';
 import Logo from '@root/src/shared/components/Logo';
-import SettingsIntensitySlider from './SettingsIntensitySlider';
+
 import Dialogs from './Dialogs';
+import DividerWithHeading from './DividerWithHeading';
+import OperatingModeSelect from './OperatingModeSelect';
+import SettingsFooter from './SettingsFooter';
+import SettingsIntensitySlider from './SettingsIntensitySlider';
+import SettingsMainSwitch from './SettingsMainSwitch';
+import UrlsConfigSection from './UrlsConfigSection';
 
 const Settings = () => (
    <>
       <Container
-         maxW={'container.md'}
          bg={'gray.800'}
+         borderRadius={'lg'}
+         maxW={'container.md'}
+         my={4}
          px={8}
          py={4}
-         my={4}
-         borderRadius={'lg'}
       >
          <VStack>
             <Logo />
@@ -24,12 +30,13 @@ const Settings = () => (
             <DividerWithHeading />
 
             <VStack
-               w={'full'}
                divider={<StackDivider />}
                spacing={4}
+               w={'full'}
             >
                <HStack w={'full'}>
                   <SettingsMainSwitch />
+
                   <SettingsIntensitySlider />
                </HStack>
 

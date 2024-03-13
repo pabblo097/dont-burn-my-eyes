@@ -5,16 +5,15 @@ import {
    FormLabel,
    Highlight,
    Select,
-   VStack,
    Text,
+   VStack,
 } from '@chakra-ui/react';
-import useStorage from '@root/src/shared/hooks/useStorage';
-import operatingModeStorage, {
-   isOperatingMode,
-} from '@root/src/shared/storages/OperatingModeStorage';
-import { ChangeEvent } from 'react';
-import { infoMessagesWithHighlight } from './constants';
 import t from '@root/src/shared/helpers/t';
+import useStorage from '@root/src/shared/hooks/useStorage';
+import operatingModeStorage, { isOperatingMode } from '@root/src/shared/storages/OperatingModeStorage';
+import { ChangeEvent } from 'react';
+
+import { infoMessagesWithHighlight } from './constants';
 
 const OperatingModeSelect = () => {
    const dimmerOperatingMode = useStorage(operatingModeStorage);
@@ -31,17 +30,17 @@ const OperatingModeSelect = () => {
 
    return (
       <VStack
-         w={'full'}
          spacing={4}
+         w={'full'}
       >
          <FormControl
-            display="flex"
-            alignItems="center"
+            alignItems={'center'}
+            display={'flex'}
          >
             <FormLabel
-               htmlFor="dimmer-operating-mode"
-               mb="0"
                flexShrink={0}
+               htmlFor={'dimmer-operating-mode'}
+               mb={'0'}
             >
                {t('operatingMode')}
             </FormLabel>
@@ -51,20 +50,22 @@ const OperatingModeSelect = () => {
                onChange={handleSelectChange}
             >
                <option
-                  value="blacklist"
                   selected={dimmerOperatingMode === 'blacklist'}
+                  value={'blacklist'}
                >
                   {t('blacklist')}
                </option>
+
                <option
-                  value="whitelist"
                   selected={dimmerOperatingMode === 'whitelist'}
+                  value={'whitelist'}
                >
                   {t('whitelist')}
                </option>
+
                <option
-                  value="alwaysOn"
                   selected={dimmerOperatingMode === 'alwaysOn'}
+                  value={'alwaysOn'}
                >
                   {t('alwaysOn')}
                </option>
@@ -72,8 +73,8 @@ const OperatingModeSelect = () => {
          </FormControl>
 
          <Alert
-            status="info"
             borderRadius={'md'}
+            status={'info'}
          >
             <AlertIcon />
 

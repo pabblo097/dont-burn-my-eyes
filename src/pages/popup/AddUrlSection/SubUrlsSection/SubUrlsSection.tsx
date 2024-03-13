@@ -1,5 +1,11 @@
 import { DeleteIcon } from '@chakra-ui/icons';
-import { VStack, Text, HStack, IconButton, Tooltip } from '@chakra-ui/react';
+import {
+   HStack,
+   IconButton,
+   Text,
+   Tooltip,
+   VStack
+} from '@chakra-ui/react';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import t from '@root/src/shared/helpers/t';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
@@ -20,40 +26,42 @@ const SubUrlsSection = () => {
 
    return (
       <VStack
-         w={'full'}
          bg={'gray.700'}
          borderRadius={'md'}
-         py={2}
-         px={3}
          maxH={165}
          overflowY={'auto'}
+         px={3}
+         py={2}
+         w={'full'}
       >
          <Text fontWeight={'medium'}>{t('addedSubUrls')}</Text>
+
          {addedSubUrls.map((subUrl) => (
             <HStack
-               w={'full'}
                key={subUrl}
+               w={'full'}
             >
                <Tooltip
                   label={subUrl}
                   openDelay={800}
-                  placement="top"
+                  placement={'top'}
                >
                   <Text
                      flexGrow={1}
                      overflow={'hidden'}
-                     whiteSpace={'nowrap'}
                      textOverflow={'ellipsis'}
+                     whiteSpace={'nowrap'}
                   >
                      {subUrl}
                   </Text>
                </Tooltip>
+
                <IconButton
                   aria-label={t('removeSubUrlsButtonAriaLabel')}
+                  colorScheme={'red'}
                   icon={<DeleteIcon />}
                   size={'xs'}
                   variant={'ghost'}
-                  colorScheme="red"
                   onClick={() => urlsStorage.remove(subUrl)}
                />
             </HStack>

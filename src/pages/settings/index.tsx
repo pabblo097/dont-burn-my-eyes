@@ -1,11 +1,10 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import Settings from '@pages/settings/Settings';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { ChakraProvider } from '@chakra-ui/react';
+import Settings from '@pages/settings/Settings';
 import theme from '@root/src/shared/chakraTheme';
-import setHtmlLang from '@root/src/shared/helpers/setHtmlLang';
 import { DialogContextProvider } from '@root/src/shared/contexts/DialogContext';
+import setHtmlLang from '@root/src/shared/helpers/setHtmlLang';
+import { createRoot } from 'react-dom/client';
+import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 
 refreshOnUpdate('pages/settings');
 

@@ -13,9 +13,7 @@ const storage = createStorage<boolean>('mainSwitch', {
 const mainSwitchStorage: MainSwitchStorage = {
    ...storage,
    toggle: async () => {
-      await storage.set((currentState) => {
-         return !currentState;
-      });
+      await storage.set((currentState) => !currentState);
    },
    init: async () => {
       if ((await storage.get()) === undefined) {

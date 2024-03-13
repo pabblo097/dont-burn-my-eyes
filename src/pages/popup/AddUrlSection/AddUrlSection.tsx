@@ -1,14 +1,22 @@
-import { Button, HStack, IconButton, Text, Tooltip, VStack } from '@chakra-ui/react';
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import {
+   Button,
+   HStack,
+   IconButton,
+   Text,
+   Tooltip,
+   VStack
+} from '@chakra-ui/react';
+import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
+import interleave from '@root/src/shared/helpers/interleave';
+import t from '@root/src/shared/helpers/t';
+import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
 import useStorage from '@root/src/shared/hooks/useStorage';
 import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
-import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
-import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
-import t from '@root/src/shared/helpers/t';
-import { getButtonLabel } from './helpers';
-import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+
 import { UrlLevelOperation } from './constants';
-import interleave from '@root/src/shared/helpers/interleave';
+import { getButtonLabel } from './helpers';
 import SubUrlsSection from './SubUrlsSection';
 
 const AddUrlSection = () => {
@@ -41,8 +49,8 @@ const AddUrlSection = () => {
 
    return (
       <VStack
-         w={'full'}
          spacing={3}
+         w={'full'}
       >
          <HStack w={'full'}>
             <Tooltip
@@ -51,17 +59,17 @@ const AddUrlSection = () => {
             >
                <IconButton
                   aria-label={t('expandButton')}
-                  isDisabled={urlLevel <= 0 || !isWebsite}
                   icon={<ArrowBackIcon />}
+                  isDisabled={urlLevel <= 0 || !isWebsite}
                   onClick={() => handleUrlLevelChange('down')}
                />
             </Tooltip>
 
             <Button
-               w={'full'}
                colorScheme={isUrlInList ? 'red' : 'blue'}
-               justifyContent={'center'}
                isDisabled={!isWebsite}
+               justifyContent={'center'}
+               w={'full'}
                onClick={handleUrlAddRemove}
             >
                {getButtonLabel(isUrlInList, operatingMode)}
@@ -73,21 +81,22 @@ const AddUrlSection = () => {
             >
                <IconButton
                   aria-label={t('narrowDownButton')}
-                  isDisabled={urlLevel >= splitUrl.length - 1 || !isWebsite}
                   icon={<ArrowForwardIcon />}
+                  isDisabled={urlLevel >= splitUrl.length - 1 || !isWebsite}
                   onClick={() => handleUrlLevelChange('up')}
                />
             </Tooltip>
          </HStack>
+
          <Text
-            w={'full'}
             bg={'gray.700'}
             borderRadius={'md'}
-            py={2}
-            px={3}
             fontSize={'md'}
             fontWeight={'medium'}
+            px={3}
+            py={2}
             textAlign={'center'}
+            w={'full'}
             wordBreak={'break-all'}
          >
             {isWebsite ? selectedUrl : t('websiteNotSupported')}

@@ -3,28 +3,26 @@ import { Flex, IconButton, Tooltip } from '@chakra-ui/react';
 import FooterLinks from '@root/src/shared/components/FooterLinks';
 import t from '@root/src/shared/helpers/t';
 
-const PopupFooter = () => {
-   return (
-      <Flex
-         justify={'space-between'}
-         align={'center'}
-         w={'full'}
-      >
-         <FooterLinks />
+const PopupFooter = () => (
+   <Flex
+      align={'center'}
+      justify={'space-between'}
+      w={'full'}
+   >
+      <FooterLinks />
 
-         <Tooltip label={t('settings')}>
-            <IconButton
-               variant={'link'}
-               boxSize={'32px'}
-               size={'sm'}
-               aria-label={t('openSettingsAriaLabel')}
-               _hover={{ color: 'blue.100' }}
-               icon={<SettingsIcon boxSize={'24px'} />}
-               onClick={() => chrome.runtime.openOptionsPage()}
-            />
-         </Tooltip>
-      </Flex>
-   );
-};
+      <Tooltip label={t('settings')}>
+         <IconButton
+            _hover={{ color: 'blue.100' }}
+            aria-label={t('openSettingsAriaLabel')}
+            boxSize={'32px'}
+            icon={<SettingsIcon boxSize={'24px'} />}
+            size={'sm'}
+            variant={'link'}
+            onClick={() => chrome.runtime.openOptionsPage()}
+         />
+      </Tooltip>
+   </Flex>
+);
 
 export default PopupFooter;

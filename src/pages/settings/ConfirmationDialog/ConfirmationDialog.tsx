@@ -1,17 +1,18 @@
 import {
    AlertDialog,
-   AlertDialogOverlay,
-   AlertDialogContent,
-   AlertDialogHeader,
    AlertDialogBody,
-   AlertDialogFooter,
-   Button,
    AlertDialogCloseButton,
+   AlertDialogContent,
+   AlertDialogFooter,
+   AlertDialogHeader,
+   AlertDialogOverlay,
+   Button,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
-import { ConfirmationDialogProps } from './constants';
 import t from '@root/src/shared/helpers/t';
 import useDialog from '@root/src/shared/hooks/useDialog';
+import { useRef } from 'react';
+
+import { ConfirmationDialogProps } from './constants';
 
 const ConfirmationDialog = ({ id, title, message }: ConfirmationDialogProps) => {
    const { closeDialog, getIsDialogOpen } = useDialog();
@@ -22,19 +23,22 @@ const ConfirmationDialog = ({ id, title, message }: ConfirmationDialogProps) => 
 
    return (
       <AlertDialog
-         id={id}
-         motionPreset="slideInBottom"
-         leastDestructiveRef={cancelRef}
-         onClose={onClose}
-         isOpen={getIsDialogOpen(id)}
          isCentered
+         id={id}
+         isOpen={getIsDialogOpen(id)}
+         leastDestructiveRef={cancelRef}
+         motionPreset={'slideInBottom'}
+         onClose={onClose}
       >
          <AlertDialogOverlay />
 
          <AlertDialogContent>
             <AlertDialogHeader>{title}</AlertDialogHeader>
+
             <AlertDialogCloseButton aria-label={t('closeDialogButtonAriaLabel')} />
+
             <AlertDialogBody>{message}</AlertDialogBody>
+
             <AlertDialogFooter>
                <Button
                   ref={cancelRef}

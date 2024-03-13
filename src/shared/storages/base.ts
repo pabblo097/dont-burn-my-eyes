@@ -162,9 +162,7 @@ export function createStorage<D>(key: string, config?: StorageConfig): BaseStora
       };
    };
 
-   const getSnapshot = () => {
-      return cache;
-   };
+   const getSnapshot = () => cache;
 
    _getDataFromStorage().then((data) => {
       cache = data;

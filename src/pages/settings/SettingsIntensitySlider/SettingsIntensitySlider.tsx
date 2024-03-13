@@ -18,34 +18,36 @@ const SettingsIntensitySlider = () => {
 
    return (
       <FormControl
-         display="flex"
-         alignItems="center"
+         alignItems={'center'}
+         display={'flex'}
          onMouseEnter={() => setShowTooltip(true)}
          onMouseLeave={() => setShowTooltip(false)}
       >
          <FormLabel
-            htmlFor="intensity-slider"
-            mb="0"
+            htmlFor={'intensity-slider'}
+            mb={'0'}
          >
             {t('intensity')}
          </FormLabel>
+
          <Slider
-            id="intensity-slider"
             aria-label={t('intensity')}
-            value={intensity}
+            id={'intensity-slider'}
             step={5}
+            value={intensity}
             onChange={(value) => intensityStorage.set(value)}
          >
             <SliderTrack>
                <SliderFilledTrack />
             </SliderTrack>
+
             <Tooltip
                hasArrow
-               bg="blue.500"
-               color="white"
-               placement="top"
+               bg={'blue.500'}
+               color={'white'}
                isOpen={showTooltip}
                label={`${intensity}%`}
+               placement={'top'}
             >
                <SliderThumb />
             </Tooltip>

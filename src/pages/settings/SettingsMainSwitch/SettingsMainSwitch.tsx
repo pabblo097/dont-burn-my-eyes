@@ -8,17 +8,18 @@ const SettingsMainSwitch = () => {
 
    return (
       <FormControl
-         display="flex"
-         alignItems="center"
+         alignItems={'center'}
+         display={'flex'}
       >
          <FormLabel
-            htmlFor="dimmer-switch"
-            mb="0"
+            htmlFor={'dimmer-switch'}
+            mb={'0'}
          >
             {t('enableScreenDimmer')}
          </FormLabel>
+
          <Switch
-            id="dimmer-switch"
+            id={'dimmer-switch'}
             isChecked={mainSwitchValue}
             onChange={mainSwitchStorage.toggle}
          />

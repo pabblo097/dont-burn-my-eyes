@@ -1,4 +1,5 @@
 import { Link, Tooltip } from '@chakra-ui/react';
+
 import { IconButtonLinkProps } from './constants';
 
 const IconButtonLink = ({
@@ -7,23 +8,21 @@ const IconButtonLink = ({
    tooltipLabel,
    isExternal = false,
    hoverColor = 'blue.100',
-}: IconButtonLinkProps) => {
-   return (
-      <Tooltip label={tooltipLabel}>
-         <Link
-            href={href}
-            boxSize={'32px'}
-            display={'flex'}
-            justifyContent={'center'}
-            alignItems={'center'}
-            borderRadius={'md'}
-            _hover={{ color: hoverColor }}
-            isExternal={isExternal}
-         >
-            {icon}
-         </Link>
-      </Tooltip>
-   );
-};
+}: IconButtonLinkProps) => (
+   <Tooltip label={tooltipLabel}>
+      <Link
+         _hover={{ color: hoverColor }}
+         alignItems={'center'}
+         borderRadius={'md'}
+         boxSize={'32px'}
+         display={'flex'}
+         href={href}
+         isExternal={isExternal}
+         justifyContent={'center'}
+      >
+         {icon}
+      </Link>
+   </Tooltip>
+);
 
 export default IconButtonLink;

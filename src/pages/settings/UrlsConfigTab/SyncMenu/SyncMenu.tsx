@@ -1,11 +1,19 @@
-import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons';
-import { Menu, MenuButton, Button, MenuList, MenuItem, Box } from '@chakra-ui/react';
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
+import {
+   Box,
+   Button,
+   Menu,
+   MenuButton,
+   MenuItem,
+   MenuList
+} from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
-import { useRef, ChangeEvent } from 'react';
-import { SyncMenuProps } from './constants';
 import { exportUrls, importUrls } from '@root/src/shared/helpers/urlsSync';
 import useDialog from '@root/src/shared/hooks/useDialog';
+import { ChangeEvent, useRef } from 'react';
+
 import { importSuccessDialogId, wrongDataDialogId } from '../../Dialogs';
+import { SyncMenuProps } from './constants';
 
 const SyncMenu = ({ tabMode, urls }: SyncMenuProps) => {
    const fileInputRef = useRef<HTMLInputElement>(null);
@@ -23,7 +31,7 @@ const SyncMenu = ({ tabMode, urls }: SyncMenuProps) => {
 
    return (
       <Box>
-         <Menu placement="bottom-end">
+         <Menu placement={'bottom-end'}>
             {({ isOpen }) => (
                <>
                   <MenuButton
@@ -32,16 +40,19 @@ const SyncMenu = ({ tabMode, urls }: SyncMenuProps) => {
                   >
                      {t('syncMenuButton')}
                   </MenuButton>
+
                   <MenuList>
                      <MenuItem onClick={handleUrlsExport}>{t('syncMenuExport')}</MenuItem>
+
                      <MenuItem onClick={() => fileInputRef.current.click()}>
                         {t('syncMenuImport')}
                      </MenuItem>
+
                      <input
                         ref={fileInputRef}
-                        type="file"
-                        accept="application/JSON"
+                        accept={'application/JSON'}
                         style={{ display: 'none' }}
+                        type={'file'}
                         onChange={handleUrlsImport}
                      />
                   </MenuList>

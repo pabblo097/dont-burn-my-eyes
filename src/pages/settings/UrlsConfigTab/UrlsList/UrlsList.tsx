@@ -1,15 +1,24 @@
-import { UrlsListProps } from './constants';
 import { DeleteIcon } from '@chakra-ui/icons';
-import { VStack, StackDivider, Flex, Box, Link, Highlight, IconButton } from '@chakra-ui/react';
+import {
+   Box,
+   Flex,
+   Highlight,
+   IconButton,
+   Link,
+   StackDivider,
+   VStack
+} from '@chakra-ui/react';
 import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
 import t from '@root/src/shared/helpers/t';
 
+import { UrlsListProps } from './constants';
+
 const UrlsList = ({ urls, searchValue, tabMode }: UrlsListProps) => (
    <Box
-      w={'full'}
-      overflowY={'auto'}
       maxH={'500px'}
+      overflowY={'auto'}
       py={2}
+      w={'full'}
    >
       <VStack
          divider={<StackDivider />}
@@ -18,14 +27,14 @@ const UrlsList = ({ urls, searchValue, tabMode }: UrlsListProps) => (
          {urls.map((url) => (
             <Flex
                key={url}
-               justify={'space-between'}
                align={'center'}
+               justify={'space-between'}
                w={'full'}
             >
                <Link
+                  isExternal
                   href={`http://${url}`}
                   ml={2}
-                  isExternal
                >
                   <Highlight
                      query={searchValue}
@@ -34,13 +43,14 @@ const UrlsList = ({ urls, searchValue, tabMode }: UrlsListProps) => (
                      {url}
                   </Highlight>
                </Link>
+
                <IconButton
-                  colorScheme={'red'}
-                  variant={'ghost'}
                   aria-label={t('removeUrlAriaLabel')}
+                  colorScheme={'red'}
                   icon={<DeleteIcon />}
-                  size={'sm'}
                   mr={4}
+                  size={'sm'}
+                  variant={'ghost'}
                   onClick={() => getUrlStorage(tabMode).remove(url)}
                />
             </Flex>

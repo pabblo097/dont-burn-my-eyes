@@ -1,5 +1,6 @@
 import { TabMode } from '@root/src/pages/settings/UrlsConfigTab/constants';
 import { ChangeEvent } from 'react';
+
 import getUrlStorage from './getUrlsStorage';
 
 const readFile = async (event: ChangeEvent<HTMLInputElement>) => {

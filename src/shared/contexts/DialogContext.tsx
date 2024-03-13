@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useState } from 'react';
+import {
+   createContext,
+   ReactNode,
+   useCallback,
+   useMemo,
+   useState
+} from 'react';
 
 interface DialogContextType {
    openDialog: (id: string) => void;
@@ -17,11 +23,12 @@ export const DialogContextProvider = ({ children }: { children: ReactNode }) => 
    const closeDialog = (id: string) =>
       setOpenedDialogsIds((prevValue) => prevValue.filter((dialogId) => dialogId !== id));
 
-   const getIsDialogOpen = (id: string) => openedDialogsIds.includes(id);
-
-   return (
-      <DialogContext.Provider value={{ openDialog, closeDialog, getIsDialogOpen }}>
-         {children}
-      </DialogContext.Provider>
+   const getIsDialogOpen = useCallback(
+      (id: string) => openedDialogsIds.includes(id),
+      [openedDialogsIds],
    );
+
+   const value = useMemo(() => ({ openDialog, closeDialog, getIsDialogOpen }), [getIsDialogOpen]);
+
+   return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>;
 };

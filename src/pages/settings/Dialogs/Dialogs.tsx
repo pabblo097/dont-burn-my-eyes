@@ -1,23 +1,22 @@
 import t from '@root/src/shared/helpers/t';
+
 import ConfirmationDialog from '../ConfirmationDialog';
-import { wrongDataDialogId, importSuccessDialogId } from './constants';
+import { importSuccessDialogId, wrongDataDialogId } from './constants';
 
-const Dialogs = () => {
-   return (
-      <>
-         <ConfirmationDialog
-            id={wrongDataDialogId}
-            title={t('wrongDataDialogTitle')}
-            message={t('wrongDataDialogMessage')}
-         />
+const Dialogs = () => (
+   <>
+      <ConfirmationDialog
+         id={wrongDataDialogId}
+         message={t('wrongDataDialogMessage')}
+         title={t('wrongDataDialogTitle')}
+      />
 
-         <ConfirmationDialog
-            id={importSuccessDialogId}
-            title={t('importSuccessDialogTitle')}
-            message={t('importSuccessDialogMessage')}
-         />
-      </>
-   );
-};
+      <ConfirmationDialog
+         id={importSuccessDialogId}
+         message={t('importSuccessDialogMessage')}
+         title={t('importSuccessDialogTitle')}
+      />
+   </>
+);
 
 export default Dialogs;

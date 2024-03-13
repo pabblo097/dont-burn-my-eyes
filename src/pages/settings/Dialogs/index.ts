@@ -1,2 +1,2 @@
-export { default } from './Dialogs';
 export * from './constants';
+export { default } from './Dialogs';
