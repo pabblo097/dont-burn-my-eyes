@@ -34,7 +34,12 @@ const SubUrlsSection = () => {
          py={2}
          w={'full'}
       >
-         <Text fontWeight={'medium'}>{t('addedSubUrls')}</Text>
+         <Text
+            fontSize={'sm'}
+            fontWeight={'bold'}
+         >
+            {t('addedSubUrls')}
+         </Text>
 
          {addedSubUrls.map((subUrl) => (
             <HStack

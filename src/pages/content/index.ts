@@ -42,7 +42,7 @@ const createDimmerElement = (shouldApplyDimmer: boolean, intensity: number) => {
    dimmer.ariaHidden = 'true';
    dimmer.setAttribute(
       'style',
-      `opacity: ${getOpacityStyle(shouldApplyDimmer, intensity)}; display: block; z-index: 2147483647; margin: 0; border-radius: 0; padding: 0; background: rgb(70, 70, 70); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; mix-blend-mode: multiply; transition: .2s`,
+      `opacity: ${getOpacityStyle(shouldApplyDimmer, intensity)}; display: block; z-index: 2147483647; margin: 0; border-radius: 0; padding: 0; background: rgb(40, 40, 40); pointer-events: none; position: fixed; top: -10%; right: -10%; width: 120%; height: 120%; mix-blend-mode: multiply; transition: .2s`,
    );
 
    return dimmer;

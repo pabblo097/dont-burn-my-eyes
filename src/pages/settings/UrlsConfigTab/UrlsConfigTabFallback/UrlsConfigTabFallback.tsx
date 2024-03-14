@@ -42,7 +42,12 @@ const UrlsConfigTabFallback = ({ tabMode }: UrlsConfigTabFallbackProps) => {
 
             <Heading textAlign={'center'}>{t('noUrlsToDisplay')}</Heading>
 
-            <Text fontSize={'md'}>{t('addUrlInPopup')}</Text>
+            <Text
+               fontSize={'md'}
+               textAlign={'center'}
+            >
+               {t('addUrlInPopup')}
+            </Text>
 
             <Button onClick={() => fileInputRef.current.click()}>{t('syncMenuImport')}</Button>
 

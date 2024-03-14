@@ -1,10 +1,18 @@
-import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
+import '@fontsource/roboto';
 
-const config: ThemeConfig = {
-   initialColorMode: 'dark',
-   useSystemColorMode: false,
+import { extendTheme, ThemeOverride } from '@chakra-ui/react';
+
+const defaultTheme: ThemeOverride = {
+   config: {
+      initialColorMode: 'dark',
+      useSystemColorMode: false,
+   },
+   fonts: {
+      heading: `'Roboto', sans-serif`,
+      body: `'Roboto', sans-serif`,
+   },
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme(defaultTheme);
 
 export default theme;
