@@ -19,7 +19,7 @@ const Popup = () => {
          divider={<StackDivider />}
          p={'4'}
          spacing={'3'}
-         width={320}
+         width={340}
       >
          <Logo />
 
@@ -39,7 +39,7 @@ export default withErrorBoundary(
    <Center
       bgColor={'gray.800'}
       height={100}
-      width={300}
+      width={340}
    >
       {'Error Occurred'}
    </Center>,
