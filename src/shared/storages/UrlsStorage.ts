@@ -1,5 +1,5 @@
 import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
-import lodash from 'lodash-es';
+import { union } from 'lodash-es';
 
 interface UrlsStorageActions {
    add: (value: string) => Promise<void>;
@@ -21,7 +21,7 @@ const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActio
       }
    },
    merge: async (values: string[]) => {
-      await storage.set((currentState) => lodash.union(currentState, values));
+      await storage.set((currentState) => union(currentState, values));
    },
 });
 
