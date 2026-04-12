@@ -1,8 +1,6 @@
 import { HStack, Icon } from '@chakra-ui/react';
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FaDonate } from 'react-icons/fa';
+import { BsGithub } from 'react-icons/bs';
 
-import t from '../../helpers/t';
 import IconButtonLink from '../IconButtonLink';
 
 const FooterLinks = () => (
@@ -14,30 +12,6 @@ const FooterLinks = () => (
          icon={
             <Icon
                as={BsGithub}
-               boxSize={'24px'}
-            />
-         }
-      />
-
-      <IconButtonLink
-         isExternal
-         href={'https://www.linkedin.com/in/pawel--wiewiora/'}
-         tooltipLabel={'LinkedIn'}
-         icon={
-            <Icon
-               as={BsLinkedin}
-               boxSize={'24px'}
-            />
-         }
-      />
-
-      <IconButtonLink
-         isExternal
-         href={'https://paypal.me/pabblo097'}
-         tooltipLabel={t('donate')}
-         icon={
-            <Icon
-               as={FaDonate}
                boxSize={'24px'}
             />
          }

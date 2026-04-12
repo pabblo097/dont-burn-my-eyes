@@ -39,10 +39,6 @@
       "description": "Label of the intensity slider.",
       "message": "Intensity"
    },
-   "donate": {
-      "description": "Label of the donate link.",
-      "message": "Donate"
-   },
    "settings": {
       "description": "Label of the settings open button tooltip and settings page header.",
       "message": "Settings"
