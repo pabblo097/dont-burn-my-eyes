@@ -19,21 +19,13 @@
       "description": "Message indicating that the website is not supported.",
       "message": "This website is not supported."
    },
-   "addToBlackList": {
-      "description": "Label of the blacklist add button.",
-      "message": "Add to the blacklist"
+   "excludeThisPage": {
+      "description": "Label of the exclude this page button.",
+      "message": "Don't dim this page"
    },
-   "removeFromBlackList": {
-      "description": "Label of the blacklist remove button.",
-      "message": "Remove from the blacklist"
-   },
-   "addToWhiteList": {
-      "description": "Label of the whitelist add button.",
-      "message": "Add to the whitelist"
-   },
-   "removeFromWhiteList": {
-      "description": "Label of the whitelist remove button.",
-      "message": "Remove from the whitelist"
+   "includeThisPage": {
+      "description": "Label of the include this page button.",
+      "message": "Dim this page"
    },
    "intensity": {
       "description": "Label of the intensity slider.",
@@ -51,57 +43,9 @@
       "description": "Label of the screen dimmer switch.",
       "message": "Enable screen dimming"
    },
-   "operatingMode": {
-      "description": "Label of the operating mode select.",
-      "message": "Operating mode"
-   },
-   "blackList": {
-      "description": "Label of the blacklist operating mode. Used in operating mode select and URLs config tab.",
-      "message": "Blacklist"
-   },
-   "whiteList": {
-      "description": "Label of the whitelist operating mode. Used in operating mode select and URLs config tab.",
-      "message": "Whitelist"
-   },
-   "alwaysOn": {
-      "description": "Label of the always on operating mode. Used in operating mode select.",
-      "message": "Always on"
-   },
-   "blacklistMessage": {
-      "description": "Message explaining how the blacklist mode works.",
-      "message": "Screen dimmer will be applied everywhere except the URLs specified in the URLs config / Blacklist section."
-   },
-   "blacklistMessageHighlight1": {
-      "description": "First highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
-      "message": "everywhere except"
-   },
-   "blacklistMessageHighlight2": {
-      "description": "Second highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
-      "message": "URLs config / Blacklist"
-   },
-   "whitelistMessage": {
-      "description": "Message explaining how the whitelist mode works.",
-      "message": "Screen dimmer will be applied only on URLs specified in the URLs config / Whitelist section."
-   },
-   "whitelistMessageHighlight1": {
-      "description": "First highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
-      "message": "only on"
-   },
-   "whitelistMessageHighlight2": {
-      "description": "Second highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
-      "message": "URLs config / Whitelist"
-   },
-   "alwaysOnMessage": {
-      "description": "Message explaining how the always on mode works.",
-      "message": "Screen dimmer will be applied everywhere."
-   },
-   "alwaysOnMessageHighlight": {
-      "description": "Highlight in the whitelist message. It has to be substring of always on message. Letter size does matter.",
-      "message": "everywhere"
-   },
    "urlsConfig": {
-      "description": "Label of the URLs config section",
-      "message": "URLs config"
+      "description": "Label of the excluded URLs config section",
+      "message": "Excluded URLs"
    },
    "noUrlsToDisplay": {
       "description": "Label of the no URLs to display header",

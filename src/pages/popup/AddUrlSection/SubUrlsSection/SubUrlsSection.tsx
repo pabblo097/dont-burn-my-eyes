@@ -1,20 +1,11 @@
 import { DeleteIcon } from '@chakra-ui/icons';
-import {
-   HStack,
-   IconButton,
-   Text,
-   Tooltip,
-   VStack
-} from '@chakra-ui/react';
-import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
+import { HStack, IconButton, Text, Tooltip, VStack } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
+import urlsStorage from '@root/src/shared/storages/UrlsStorage';
 
 const SubUrlsSection = () => {
-   const operatingMode = useStorage(operatingModeStorage);
-   const urlsStorage = getUrlStorage(operatingMode);
    const urls = useStorage(urlsStorage);
    const { splitUrl } = useCurrentUrl();
 

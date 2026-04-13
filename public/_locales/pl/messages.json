@@ -19,21 +19,13 @@
       "description": "Message indicating that the website is not supported.",
       "message": "Ta strona nie jest obsługiwana."
    },
-   "addToBlackList": {
-      "description": "Label of the blacklist add button.",
-      "message": "Dodaj do czarnej listy"
+   "excludeThisPage": {
+      "description": "Label of the exclude this page button.",
+      "message": "Nie przyciemniaj tej strony"
    },
-   "removeFromBlackList": {
-      "description": "Label of the blacklist remove button.",
-      "message": "Usuń z czarnej listy"
-   },
-   "addToWhiteList": {
-      "description": "Label of the whitelist add button.",
-      "message": "Dodaj do białej listy"
-   },
-   "removeFromWhiteList": {
-      "description": "Label of the whitelist remove button.",
-      "message": "Usuń z białej listy"
+   "includeThisPage": {
+      "description": "Label of the include this page button.",
+      "message": "Przyciemnij tę stronę"
    },
    "intensity": {
       "description": "Label of the intensity slider.",
@@ -51,57 +43,9 @@
       "description": "Label of the screen dimmer switch.",
       "message": "Włącz przyciemnianie ekranu"
    },
-   "operatingMode": {
-      "description": "Label of the operating mode select.",
-      "message": "Tryb działania"
-   },
-   "blackList": {
-      "description": "Label of the blacklist operating mode. Used in operating mode select and URLs config tab.",
-      "message": "Czarna lista"
-   },
-   "whiteList": {
-      "description": "Label of the whitelist operating mode. Used in operating mode select and URLs config tab.",
-      "message": "Biała lista"
-   },
-   "alwaysOn": {
-      "description": "Label of the always on operating mode. Used in operating mode select.",
-      "message": "Zawsze włączony"
-   },
-   "blacklistMessage": {
-      "description": "Message explaining how the blacklist mode works.",
-      "message": "Przyciemnianie ekranu będzie stosowane wszędzie z wyjątkiem adresów URL określonych w sekcji Konfiguracja adresów URL / Czarna lista."
-   },
-   "blacklistMessageHighlight1": {
-      "description": "First highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
-      "message": "wszędzie z wyjątkiem"
-   },
-   "blacklistMessageHighlight2": {
-      "description": "Second highlight in the blacklist message. It has to be substring of blacklist message. Letter size does matter.",
-      "message": "Konfiguracja adresów URL / Czarna lista"
-   },
-   "whitelistMessage": {
-      "description": "Message explaining how the whitelist mode works.",
-      "message": "Przyciemnianie ekranu będzie stosowane tylko do adresów URL określonych w sekcji Konfiguracja adresów URL / Biała lista."
-   },
-   "whitelistMessageHighlight1": {
-      "description": "First highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
-      "message": "tylko do"
-   },
-   "whitelistMessageHighlight2": {
-      "description": "Second highlight in the whitelist message. It has to be substring of whitelist message. Letter size does matter.",
-      "message": "Konfiguracja adresów URL / Biała lista"
-   },
-   "alwaysOnMessage": {
-      "description": "Message explaining how the always on mode works.",
-      "message": "Przyciemnianie ekranu będzie stosowane wszędzie."
-   },
-   "alwaysOnMessageHighlight": {
-      "description": "Highlight in the whitelist message. It has to be substring of always on message. Letter size does matter.",
-      "message": "wszędzie"
-   },
    "urlsConfig": {
-      "description": "Label of the URLs config section",
-      "message": "Konfiguracja adresów URL"
+      "description": "Label of the excluded URLs config section",
+      "message": "Wykluczone adresy URL"
    },
    "noUrlsToDisplay": {
       "description": "Label of the no URLs to display header",

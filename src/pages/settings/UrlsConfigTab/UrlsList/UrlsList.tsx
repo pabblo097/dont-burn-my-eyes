@@ -1,19 +1,11 @@
 import { DeleteIcon } from '@chakra-ui/icons';
-import {
-   Box,
-   Flex,
-   Highlight,
-   IconButton,
-   Link,
-   StackDivider,
-   VStack
-} from '@chakra-ui/react';
-import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
+import { Box, Flex, Highlight, IconButton, Link, StackDivider, VStack } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
+import urlsStorage from '@root/src/shared/storages/UrlsStorage';
 
 import { UrlsListProps } from './constants';
 
-const UrlsList = ({ urls, searchValue, tabMode }: UrlsListProps) => (
+const UrlsList = ({ urls, searchValue }: UrlsListProps) => (
    <Box
       maxH={'500px'}
       overflowY={'auto'}
@@ -51,7 +43,7 @@ const UrlsList = ({ urls, searchValue, tabMode }: UrlsListProps) => (
                   mr={4}
                   size={'sm'}
                   variant={'ghost'}
-                  onClick={() => getUrlStorage(tabMode).remove(url)}
+                  onClick={() => urlsStorage.remove(url)}
                />
             </Flex>
          ))}

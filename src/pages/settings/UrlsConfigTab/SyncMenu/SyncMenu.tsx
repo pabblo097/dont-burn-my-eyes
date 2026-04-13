@@ -1,12 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import {
-   Box,
-   Button,
-   Menu,
-   MenuButton,
-   MenuItem,
-   MenuList
-} from '@chakra-ui/react';
+import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import t from '@root/src/shared/helpers/t';
 import { exportUrls, importUrls } from '@root/src/shared/helpers/urlsSync';
 import useDialog from '@root/src/shared/hooks/useDialog';
@@ -15,16 +8,16 @@ import { ChangeEvent, useRef } from 'react';
 import { importSuccessDialogId, wrongDataDialogId } from '../../Dialogs';
 import { SyncMenuProps } from './constants';
 
-const SyncMenu = ({ tabMode, urls }: SyncMenuProps) => {
+const SyncMenu = ({ urls }: SyncMenuProps) => {
    const fileInputRef = useRef<HTMLInputElement>(null);
    const { openDialog } = useDialog();
 
    const handleUrlsExport = () => {
-      exportUrls(tabMode, urls);
+      exportUrls(urls);
    };
 
    const handleUrlsImport = async (event: ChangeEvent<HTMLInputElement>) => {
-      const hasImportBeenSuccessful = await importUrls(event, tabMode);
+      const hasImportBeenSuccessful = await importUrls(event);
 
       openDialog(hasImportBeenSuccessful ? importSuccessDialogId : wrongDataDialogId);
    };

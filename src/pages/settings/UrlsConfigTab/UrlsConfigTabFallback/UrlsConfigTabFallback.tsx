@@ -1,11 +1,4 @@
-import {
-   Button,
-   Center,
-   Heading,
-   Image,
-   Text,
-   VStack
-} from '@chakra-ui/react';
+import { Button, Center, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import travolta from '@root/src/assets/img/travolta.png';
 import t from '@root/src/shared/helpers/t';
 import { importUrls } from '@root/src/shared/helpers/urlsSync';
@@ -13,14 +6,13 @@ import useDialog from '@root/src/shared/hooks/useDialog';
 import { ChangeEvent, useRef } from 'react';
 
 import { importSuccessDialogId, wrongDataDialogId } from '../../Dialogs';
-import { UrlsConfigTabFallbackProps } from './constants';
 
-const UrlsConfigTabFallback = ({ tabMode }: UrlsConfigTabFallbackProps) => {
+const UrlsConfigTabFallback = () => {
    const fileInputRef = useRef<HTMLInputElement>(null);
    const { openDialog } = useDialog();
 
    const handleUrlsImport = async (event: ChangeEvent<HTMLInputElement>) => {
-      const hasImportBeenSuccessful = await importUrls(event, tabMode);
+      const hasImportBeenSuccessful = await importUrls(event);
 
       openDialog(hasImportBeenSuccessful ? importSuccessDialogId : wrongDataDialogId);
    };

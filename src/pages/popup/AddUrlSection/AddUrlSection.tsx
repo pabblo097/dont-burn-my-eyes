@@ -1,18 +1,10 @@
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
-import {
-   Button,
-   HStack,
-   IconButton,
-   Text,
-   Tooltip,
-   VStack
-} from '@chakra-ui/react';
-import getUrlStorage from '@root/src/shared/helpers/getUrlsStorage';
+import { Button, HStack, IconButton, Text, Tooltip, VStack } from '@chakra-ui/react';
 import interleave from '@root/src/shared/helpers/interleave';
 import t from '@root/src/shared/helpers/t';
 import useCurrentUrl from '@root/src/shared/hooks/useCurrentUrl';
 import useStorage from '@root/src/shared/hooks/useStorage';
-import operatingModeStorage from '@root/src/shared/storages/OperatingModeStorage';
+import urlsStorage from '@root/src/shared/storages/UrlsStorage';
 import { useState } from 'react';
 
 import { UrlLevelOperation } from './constants';
@@ -21,8 +13,6 @@ import SubUrlsSection from './SubUrlsSection';
 
 const AddUrlSection = () => {
    const [urlLevel, setUrlLevel] = useState(0);
-   const operatingMode = useStorage(operatingModeStorage);
-   const urlsStorage = getUrlStorage(operatingMode);
    const urls = useStorage(urlsStorage);
    const { splitUrl, isWebsite } = useCurrentUrl();
 
@@ -72,7 +62,7 @@ const AddUrlSection = () => {
                w={'full'}
                onClick={handleUrlAddRemove}
             >
-               {getButtonLabel(isUrlInList, operatingMode)}
+               {getButtonLabel(isUrlInList)}
             </Button>
 
             <Tooltip

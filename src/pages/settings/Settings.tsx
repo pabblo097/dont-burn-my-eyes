@@ -1,14 +1,8 @@
-import {
-   Container,
-   HStack,
-   StackDivider,
-   VStack
-} from '@chakra-ui/react';
+import { Container, HStack, StackDivider, VStack } from '@chakra-ui/react';
 import Logo from '@root/src/shared/components/Logo';
 
 import Dialogs from './Dialogs';
 import DividerWithHeading from './DividerWithHeading';
-import OperatingModeSelect from './OperatingModeSelect';
 import SettingsFooter from './SettingsFooter';
 import SettingsIntensitySlider from './SettingsIntensitySlider';
 import SettingsMainSwitch from './SettingsMainSwitch';
@@ -39,8 +33,6 @@ const Settings = () => (
 
                   <SettingsIntensitySlider />
                </HStack>
-
-               <OperatingModeSelect />
 
                <UrlsConfigSection />
 

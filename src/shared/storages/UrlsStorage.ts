@@ -8,7 +8,15 @@ interface UrlsStorageActions {
    merge: (values: string[]) => Promise<void>;
 }
 
-const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActions => ({
+export type UrlsStorage = BaseStorage<string[]> & UrlsStorageActions;
+
+const storage = createStorage<string[]>('urlsList', {
+   storageType: StorageType.Local,
+   liveUpdate: true,
+});
+
+const urlsStorage: UrlsStorage = {
+   ...storage,
    add: async (value: string) => {
       await storage.set((currentState) => [...currentState, value]);
    },
@@ -23,26 +31,6 @@ const getUrlsStorageActions = (storage: BaseStorage<string[]>): UrlsStorageActio
    merge: async (values: string[]) => {
       await storage.set((currentState) => union(currentState, values));
    },
-});
-
-export type UrlsStorage = BaseStorage<string[]> & UrlsStorageActions;
-
-const baseBlacklistStorage = createStorage<string[]>('blacklist', {
-   storageType: StorageType.Local,
-   liveUpdate: true,
-});
-
-const baseWhitelistStorage = createStorage<string[]>('whitelist', {
-   storageType: StorageType.Local,
-   liveUpdate: true,
-});
-
-export const blacklistStorage: UrlsStorage = {
-   ...baseBlacklistStorage,
-   ...getUrlsStorageActions(baseBlacklistStorage),
 };
 
-export const whitelistStorage: UrlsStorage = {
-   ...baseWhitelistStorage,
-   ...getUrlsStorageActions(baseWhitelistStorage),
-};
+export default urlsStorage;

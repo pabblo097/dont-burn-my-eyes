@@ -1,7 +1,6 @@
-import { TabMode } from '@root/src/pages/settings/UrlsConfigTab/constants';
 import { ChangeEvent } from 'react';
 
-import getUrlStorage from './getUrlsStorage';
+import urlsStorage from '../storages/UrlsStorage';
 
 const readFile = async (event: ChangeEvent<HTMLInputElement>) => {
    const file = event.target.files[0];
@@ -21,9 +20,10 @@ const safeJsonParse = (
 const isStringArray = (value: unknown): value is string[] =>
    Array.isArray(value) && value.every((v) => typeof v === 'string');
 
-export const exportUrls = (filename: string, dataToWrite: string[]) => {
+export const exportUrls = (dataToWrite: string[]) => {
    const blob = new Blob([JSON.stringify(dataToWrite, null, 2)], { type: 'text/json' });
    const link = document.createElement('a');
+   const filename = 'urlsList';
 
    link.download = `${filename}.json`;
    link.href = window.URL.createObjectURL(blob);
@@ -39,7 +39,7 @@ export const exportUrls = (filename: string, dataToWrite: string[]) => {
    link.remove();
 };
 
-export const importUrls = async (event: ChangeEvent<HTMLInputElement>, tabMode: TabMode) => {
+export const importUrls = async (event: ChangeEvent<HTMLInputElement>) => {
    const text = await readFile(event);
    const { error, result } = safeJsonParse(text);
 
@@ -47,7 +47,7 @@ export const importUrls = async (event: ChangeEvent<HTMLInputElement>, tabMode: 
       return false;
    }
 
-   await getUrlStorage(tabMode).merge(result);
+   await urlsStorage.merge(result);
 
    return true;
 };

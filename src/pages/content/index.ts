@@ -1,9 +1,7 @@
 interface StorageValues {
    mainSwitch: boolean;
    intensity: number;
-   operatingMode: string;
-   blacklist: string[];
-   whitelist: string[];
+   urlsList: string[];
 }
 
 type ChangesValues = {
@@ -18,23 +16,9 @@ const getOpacityStyle = (shouldApplyDimmer: boolean, intensity: number) =>
 
 const getShouldApplyDimmer = (
    mainSwitch: boolean,
-   operatingMode: string,
-   blacklist: string[],
-   whitelist: string[],
+   urlsList: string[],
    currentUrl: string,
-): boolean => {
-   switch (operatingMode) {
-      case 'blacklist': {
-         return mainSwitch && !blacklist.some((url) => currentUrl.includes(url));
-      }
-      case 'whitelist': {
-         return mainSwitch && whitelist.some((url) => currentUrl.includes(url));
-      }
-      case 'alwaysOn': {
-         return mainSwitch;
-      }
-   }
-};
+): boolean => mainSwitch && !urlsList.some((url) => currentUrl.includes(url));
 
 const createDimmerElement = (shouldApplyDimmer: boolean, intensity: number) => {
    const dimmer = document.createElement('div');
@@ -52,17 +36,10 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
    (await chrome.storage.local.get()) as StorageValues;
 
 (async () => {
-   let { mainSwitch, intensity, operatingMode, blacklist, whitelist } =
-      await getValuesFromStorage();
+   let { mainSwitch, intensity, urlsList } = await getValuesFromStorage();
    const currentUrl = window.location.href;
 
-   let shouldApplyDimmer: boolean = getShouldApplyDimmer(
-      mainSwitch,
-      operatingMode,
-      blacklist,
-      whitelist,
-      currentUrl,
-   );
+   let shouldApplyDimmer: boolean = getShouldApplyDimmer(mainSwitch, urlsList, currentUrl);
 
    const dimmer = createDimmerElement(shouldApplyDimmer, intensity);
 
@@ -77,25 +54,17 @@ const getValuesFromStorage = async (): Promise<StorageValues> =>
          intensity = changes.intensity.newValue;
       }
 
-      if (Object.hasOwn(changes, 'operatingMode')) {
-         operatingMode = changes.operatingMode.newValue;
-      }
-
-      if (Object.hasOwn(changes, 'blacklist')) {
-         blacklist = changes.blacklist.newValue;
-      }
-
-      if (Object.hasOwn(changes, 'whitelist')) {
-         whitelist = changes.whitelist.newValue;
+      if (Object.hasOwn(changes, 'urlsList')) {
+         urlsList = changes.urlsList.newValue;
       }
 
       shouldApplyDimmer = getShouldApplyDimmer(
          mainSwitch,
-         operatingMode,
-         blacklist,
-         whitelist,
+
+         urlsList,
          currentUrl,
       );
+
       dimmer.style.opacity = getOpacityStyle(shouldApplyDimmer, intensity);
    });
 })();
